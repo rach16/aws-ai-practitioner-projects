@@ -1,28 +1,28 @@
 {
   "prompt": "Invent a name for a coffee shop. Reply with the name only.",
   "repeats": 5,
-  "ran_at": "2026-10-16T17:39:57+00:00",
+  "ran_at": "2026-10-16T17:51:37+00:00",
   "results": {
     "nova-micro": {
       "0.0": {
         "answers": [
           "Brewed Awakenings",
           "Brewed Awakenings",
-          "Brew Haven",
+          "Brewed Awakenings",
           "Brewed Awakenings",
           "Brewed Awakenings"
         ],
-        "distinct": 2
+        "distinct": 1
       },
       "1.0": {
         "answers": [
+          "Coffee Haven",
           "Brewed Awakenings",
-          "Brewed Awakenings",
-          "Brew Haven",
-          "Brew & Bliss",
+          "Cozy Bean Caf\u00e9",
+          "Espresso Bliss",
           "Brewed Awakenings"
         ],
-        "distinct": 3
+        "distinct": 4
       }
     },
     "nova-lite": {
@@ -38,11 +38,11 @@
       },
       "1.0": {
         "answers": [
-          "Serendipity Sips",
-          "\"Bean Bliss Caf\u00e9\"",
-          "\"Brew & Muse Caf\u00e9\"",
+          "\"Brew Bliss Caf\u00e9\"",
+          "\"Brewed Awakenings\"",
           "Brew Haven",
-          "\"Bean Bliss Caf\u00e9\""
+          "Brew Haven Caf\u00e9",
+          "Brew Haven"
         ],
         "distinct": 4
       }
@@ -60,11 +60,11 @@
       },
       "1.0": {
         "answers": [
+          "Java Junction.",
           "Brew Haven.",
-          "BrewHaven Cafe.",
-          "Brew Haven Caf\u00e9.",
+          "\"Bean Bliss Caf\u00e9\"",
           "Brew Haven.",
-          "Brew Haven"
+          "Aroma Beans Cafe."
         ],
         "distinct": 4
       }
@@ -72,23 +72,23 @@
     "claude-haiku-4.5": {
       "0.0": {
         "answers": [
-          "ERROR ResourceNotFoundException: Model use case details have not been submitted for this account. Fill out the Anthropic use case details form before using the model. If you have already filled out the form, try again in 15 minutes.",
-          "ERROR ResourceNotFoundException: Model use case details have not been submitted for this account. Fill out the Anthropic use case details form before using the model. If you have already filled out the form, try again in 15 minutes.",
-          "ERROR ResourceNotFoundException: Model use case details have not been submitted for this account. Fill out the Anthropic use case details form before using the model. If you have already filled out the form, try again in 15 minutes.",
-          "ERROR ResourceNotFoundException: Model use case details have not been submitted for this account. Fill out the Anthropic use case details form before using the model. If you have already filled out the form, try again in 15 minutes.",
-          "ERROR ResourceNotFoundException: Model use case details have not been submitted for this account. Fill out the Anthropic use case details form before using the model. If you have already filled out the form, try again in 15 minutes."
+          "The Grind House",
+          "The Grind House",
+          "The Grind House",
+          "The Grind House",
+          "The Grind House"
         ],
         "distinct": 1
       },
       "1.0": {
         "answers": [
-          "ERROR ResourceNotFoundException: Model use case details have not been submitted for this account. Fill out the Anthropic use case details form before using the model. If you have already filled out the form, try again in 15 minutes.",
-          "ERROR ResourceNotFoundException: Model use case details have not been submitted for this account. Fill out the Anthropic use case details form before using the model. If you have already filled out the form, try again in 15 minutes.",
-          "ERROR ResourceNotFoundException: Model use case details have not been submitted for this account. Fill out the Anthropic use case details form before using the model. If you have already filled out the form, try again in 15 minutes.",
-          "ERROR ResourceNotFoundException: Model use case details have not been submitted for this account. Fill out the Anthropic use case details form before using the model. If you have already filled out the form, try again in 15 minutes.",
-          "ERROR ResourceNotFoundException: Model use case details have not been submitted for this account. Fill out the Anthropic use case details form before using the model. If you have already filled out the form, try again in 15 minutes."
+          "The Daily Grind Hub",
+          "Brew Haven",
+          "The Daily Grind House",
+          "The Daily Grind & Gather",
+          "Brew & Bloom"
         ],
-        "distinct": 1
+        "distinct": 5
       }
     },
     "llama3-8b": {
@@ -104,13 +104,13 @@
       },
       "1.0": {
         "answers": [
-          "Brewtiful Day Caf\u00e9",
           "Brewtiful Day",
-          "Brewtopia",
           "Brewed Awakening",
-          "\"Bean Scene\""
+          "Brewed Awakening",
+          "Brewster's Oasis",
+          "Brewtopia"
         ],
-        "distinct": 5
+        "distinct": 4
       }
     },
     "llama3.3-70b": {
@@ -126,13 +126,13 @@
       },
       "1.0": {
         "answers": [
-          "Brewed Awakening Co.",
           "Brewed Awakening",
-          "Brewed Awakening Co.",
+          "Brewed Awakening",
+          "Brewed Awakening",
           "Brewed Awakening",
           "Brewed Awakening"
         ],
-        "distinct": 2
+        "distinct": 1
       }
     },
     "mistral-7b": {
@@ -149,32 +149,32 @@
       "1.0": {
         "answers": [
           "Bean's Blissful Retreat",
-          "Bean's Blissful Retreat.\n\n(Note: I don't have the ability to invent names based on specific locations, themes or cuisine type, but I can create a general name for a coffee shop that sounds inviting and cozy. Feel free to modify or expand upon it as needed for your business.)",
-          "Bean Scene Coffeehouse",
-          "Bean's Haven\n\nOr\n\nMug's Cozy Corner\n\nOr\n\nBrewtopia Coffeehouse\n\nOr\n\nJittery Java Junction\n\nOr\n\nCaffeinated Cottage\n\nChoose the one you like best!",
-          "Bean's Haven\n\nOr, if you prefer a more whimsical name:\n\nMug's Delight"
+          "Bean's Haven\n\n(or)\n\nMocha Moments\n\n(or)\n\nBrewed Awakening\n\n(or)\n\nThe Daily Grind\n\n(or)\n\nCaffeine Cabana\n\n(or)\n\nThe Perk Palace\n\n(or)\n\nSip & Savor\n\n(or)\n\nJava Junction\n\n(or)\n\nCoffee Capital\n\n(or)\n\nThe Roastery\n\n(or)\n\nMug's Muse\n\n(or)\n\nThe Espresso Emporium\n\n(or)\n\nBrewed Bliss\n\n(or)\n\nCafe Serenity\n\n(or)\n\nMorning Mingle\n\n(or)\n\nThe Mug Mansion\n\n(or)\n\nGrinds & Grapes (for a coffee shop that also sells wine)",
+          "Bean's Blissful Retreat.\n\nOr, if you prefer something more modern:\n\nThe Daily Grind.\n\nOr, for a cozy and rustic feel:\n\nMug's Cozy Corner.",
+          "Bean's Bliss Coffeehouse",
+          "Bean's Blissful Retreat"
         ],
-        "distinct": 5
+        "distinct": 4
       }
     },
     "gpt-oss-20b": {
       "0.0": {
         "answers": [
-          "Roast & Reverie",
-          "Bean & Quill",
           "Bean & Quill",
           "Roast & Reverie",
-          "Perk & Ponder"
+          "Bean & Quill",
+          "Roast & Reverie",
+          "Bean & Quill"
         ],
-        "distinct": 3
+        "distinct": 2
       },
       "1.0": {
         "answers": [
-          "Sunrise Brew Hut",
-          "Brewed Awakening",
-          "Brew & Bloom",
-          "Brewtopia",
-          "Mug & Murmur"
+          "Foam & Folly",
+          "Percolate & Co.",
+          "Beanstalk Brewbar",
+          "Bean & Barrel",
+          "Brew & Muse"
         ],
         "distinct": 5
       }

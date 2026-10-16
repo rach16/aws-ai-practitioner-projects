@@ -12,28 +12,38 @@ easy it is to measure them wrong.
 
 ## Results
 
-Seven models, twenty graded cases each, temperature pinned at 0, us-east-1.
+Eight models, twenty graded cases each, temperature pinned at 0, us-east-1.
 
 | Model | Score | Model latency | Per 10k requests |
 |---|---:|---:|---:|
 | `nova-lite` | 17/20 (85%) | **347 ms** | **$0.11** |
-| `nova-pro` | 17/20 (85%) | 891 ms | $2.27 |
 | `llama3.3-70b` | 17/20 (85%) | 632 ms | $0.85 |
+| `nova-pro` | 17/20 (85%) | 891 ms | $2.27 |
+| `claude-haiku-4.5` | 17/20 (85%) | 820 ms | $2.82 |
 | `nova-micro` | 16/20 (80%) | 393 ms | $0.10 |
 | `llama3-8b` | 16/20 (80%) | 547 ms | $0.42 |
 | `gpt-oss-20b` | 16/20 (80%) | 934 ms | $0.60 |
 | `mistral-7b` | 9/20 (45%) | 610 ms | $0.18 |
 
-**Nova Lite matches Nova Pro's score at a twentieth of the cost and two and a
-half times the speed.** Same twenty questions, same number right, $0.11 against
-$2.27 per ten thousand requests. On this workload the expensive tier buys
-nothing.
+**Four models tie at 85%. They cost $0.11, $0.85, $2.27 and $2.82 per ten
+thousand requests.** A 26× price spread across models that answered the same
+number of questions correctly, with the cheapest also the fastest.
 
-That is the finding, and it is the opposite of what picking by tier would say.
+That is the finding, and it is the opposite of what picking by tier or by brand
+would tell you. On this workload, paying more bought nothing.
+
+What it does not say is that Nova Lite is the best model. It says the twenty
+questions in this suite do not distinguish the top four, which is a fact about
+the suite as much as about the models. A harder suite would separate them. The
+honest claim is narrower and more useful: **if your task looks like these
+twenty, the expensive options are wasted money, and you should find that out by
+measuring rather than by reading a tier list.**
 
 ### The scores are samples, not values
 
 The suite was run twice, identically. Four of the seven models moved:
+
+Anthropic was still blocked during these two runs, so it has one run only.
 
 | Model | Run 1 | Run 2 |
 |---|---:|---:|
@@ -69,18 +79,28 @@ things:
 
 | Model | Classify | JSON | Summarise | Instructions | Arithmetic |
 |---|---|---|---|---|---|
-| `nova-micro` | 83% | 100% | 67% | 100% | 33% |
+| `nova-micro` | 83% | 75% | 100% | 100% | 33% |
 | `nova-lite` | 83% | 75% | 100% | 100% | 67% |
 | `nova-pro` | 83% | 75% | 100% | 100% | 67% |
-| `llama3-8b` | 100% | 50% | 100% | 100% | 33% |
+| `claude-haiku-4.5` | 67% | **100%** | 67% | 100% | **100%** |
+| `llama3-8b` | **100%** | 50% | 100% | 100% | 33% |
 | `llama3.3-70b` | 67% | 75% | 100% | 100% | **100%** |
 | `mistral-7b` | 67% | 25% | 33% | 75% | 0% |
-| `gpt-oss-20b` | 83% | 75% | 67% | 75% | 100% |
+| `gpt-oss-20b` | 83% | 75% | 67% | 100% | 67% |
 
-Llama 3.3 70B is the only model to sweep the arithmetic column; Nova Micro
-fails two thirds of it while scoring 100% on JSON extraction. If your workload
-is extraction, one of the cheapest models on the list is among the best; if it
-is multi-step reasoning, it is the worst. A single headline number hides both.
+**This is where the four-way tie comes apart.** Claude Haiku is the only model
+to take both JSON extraction and arithmetic outright, and Llama 3.3 70B is the
+only other model to sweep arithmetic. Nova Lite, the cheapest of the four, is
+behind on both and makes up the difference on summarising.
+
+So the tie at 85% is four models being good at different things, not four
+interchangeable models. If the workload is structured extraction or multi-step
+reasoning, the 26× price gap starts to look like it buys something. If it is
+classification and summarising, it does not.
+
+Note also that Llama 3 8B tops the classification column outright while placing
+second to last on JSON. A single averaged score would have ranked it mid-table
+and told you nothing about either.
 
 ## What the suite measures
 
@@ -135,28 +155,31 @@ The common thread: **a benchmark number is a claim about the measuring
 apparatus at least as much as about the model**, and a wrong one does not
 announce itself. Every one of these produced a plausible-looking table.
 
-## Not measured
+## The Anthropic gate
 
-`claude-haiku-4.5` is in the lineup and has no results. Every call returns
-`ResourceNotFoundException: Model use case details have not been submitted for
-this account`.
+`claude-haiku-4.5` was 20 error rows for most of this project's life. Every
+call returned `ResourceNotFoundException: Model use case details have not been
+submitted for this account`.
 
-Worth knowing why that is a `ResourceNotFound` and not an access-denied: the
-Bedrock **Model access page has been retired**. Serverless foundation models are
-now enabled automatically on first invocation, so there is no access list to be
-missing from. Two exceptions survive. Anthropic models still require use case
-details from a first-time account, and Marketplace-served models need a user
-with Marketplace permissions to invoke once. Until that clears, the model is
-simply not resolvable for this account, which is what the error says.
+Worth knowing why that is a `ResourceNotFound` rather than an access denial:
+the Bedrock **Model access page has been retired**. Serverless foundation
+models are now enabled automatically on first invocation, so there is no access
+list to be missing from. Two exceptions survive. Anthropic models require
+first-time use case details, submitted once per account, and the information
+goes to Anthropic. Marketplace-served models need a user with Marketplace
+permissions to invoke once. Until that clears the model is not resolvable for
+the account at all, which is exactly what the error says.
 
-The row is left in the report as an error rather than dropped, because a lineup
-that silently omits what did not work is not a lineup.
+Submitting the form took a few minutes and access was live immediately after,
+not the fifteen minutes the error warns about.
 
-It is also the one model priced by hand. The AWS Pricing API publishes no
+It remains the one model priced by hand. The AWS Pricing API publishes no
 us-east-1 on-demand token rate for any current Anthropic model, only the legacy
-Claude 2.x and Claude 3 entries, so its price is copied from the public pricing
-page with the date it was checked and marked `manual` in the report. Every other
-price is fetched live.
+Claude 2.x and Claude 3 entries, so its $1.00/$5.00 per million is copied from
+the public pricing page with the date checked, and the report marks that row
+`manual` while every other row says `pricing-api`. It is also the most
+expensive model in the lineup, which makes the distinction worth keeping
+visible rather than quietly folding a typed number into a fetched table.
 
 ## Running it
 
