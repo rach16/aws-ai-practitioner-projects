@@ -25,17 +25,15 @@ I passed AIF-C01 in September 2026. A certification shows familiarity; these sho
 | **P5** | [Churn classifier](./p5-churn-classifier) | The full ML lifecycle with a real confusion matrix, precision, recall and F1. | Planned |
 | **P6** | [Secure Bedrock](./p6-secure-bedrock) | Least-privilege IAM, KMS encryption and CloudTrail audit queries. | Planned |
 
-## Running cost
+## Cost discipline
 
-Every project here is built to run for pennies. Total spend across all six is under five US dollars.
+Model inference is billed per token, so the cost of running these projects scales with use and stops when they stop. The architectural choice worth noting is what they avoid: **services that bill while idle**.
 
-Services that bill while idle are deliberately avoided:
-
-- **Bedrock Knowledge Bases** provisions OpenSearch Serverless, which bills roughly $350/month at minimum capacity. P2 builds retrieval by hand instead.
-- **SageMaker endpoints and Studio domains** bill continuously until explicitly deleted. P5 runs locally.
+- **Bedrock Knowledge Bases** provisions OpenSearch Serverless behind it, which bills roughly $350/month at minimum capacity whether queried or not. P2 builds retrieval by hand instead.
+- **SageMaker endpoints and Studio domains** bill continuously until explicitly deleted, not when the browser tab closes. P5 runs locally.
 - **Kendra** starts around $810/month. Not used.
 
-A $5 AWS Budgets alert guards the account.
+An AWS Budgets alert guards the account, and each project's `DECISIONS.md` records what it actually cost to run.
 
 ## What is not built here
 
