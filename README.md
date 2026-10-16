@@ -29,9 +29,31 @@ I passed AIF-C01 in September 2026. A certification shows familiarity; these sho
 
 Model inference is billed per token, so the cost of running these projects scales with use and stops when they stop. The architectural choice worth noting is what they avoid: **services that bill while idle**.
 
-- **Bedrock Knowledge Bases** provisions OpenSearch Serverless behind it, which bills roughly $350/month at minimum capacity whether queried or not. P2 builds retrieval by hand instead.
-- **SageMaker endpoints and Studio domains** bill continuously until explicitly deleted, not when the browser tab closes. P5 runs locally.
-- **Kendra** starts around $810/month. Not used.
+- **Bedrock Knowledge Bases** can provision OpenSearch Serverless behind it, which
+bills on provisioned capacity whether queried or not. It is no longer the only
+choice: the vector store list now includes **Amazon S3 Vectors**, which the AWS
+Pricing API puts at **$0.06 per GB-month with no minimum and no provisioned
+capacity**. For a corpus of a few hundred chunks that is a fraction of a cent a
+month. P2 still builds retrieval by hand, but for the reason below rather than
+for the cost.
+- **SageMaker endpoints and Studio domains** bill continuously until explicitly
+deleted, not when the browser tab closes. P5 runs locally.
+- **Kendra** starts around $810/month. Not used, and that figure is from the
+public pricing page rather than the Pricing API, which publishes no Kendra rates.
+
+An earlier version of this README said Knowledge Bases cost roughly $350/month at
+minimum. That was true of the OpenSearch Serverless option and is not true of the
+service, and the figure itself came from memory: the Pricing API returns no
+records for `AmazonOpenSearchServerless`, so it was never verified here. It is
+left in this paragraph as a correction rather than deleted, because a cost claim
+that is confidently wrong is exactly the kind of thing these projects are
+supposed to catch.
+
+**P2 builds retrieval by hand for the learning, not to save money.** Writing the
+chunking, the embedding calls and the cosine search yourself is what makes
+retrieval explainable in an interview, instead of describing a console button.
+That reason does not depend on a price, which is just as well, because the price
+changed.
 
 An AWS Budgets alert guards the account, and each project's `DECISIONS.md` records what it actually cost to run.
 
