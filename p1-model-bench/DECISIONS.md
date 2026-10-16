@@ -107,6 +107,24 @@ reasoning tokens are billed, and that genuinely is what the model costs to use.
 The report now flags any row that stopped on `max_tokens`, so the next instance
 of this is visible rather than silent.
 
+## Both latencies are recorded, because they answer different questions
+
+The first version timed the round trip on this machine and called it latency.
+Switching on model invocation logging exposed the problem immediately: the same
+call appeared in CloudWatch reporting `latencyMs: 231` while the client had
+measured 2570 ms. The gap was credential resolution and the TLS handshake on a
+cold client, and it was being reported as though the model were slow.
+
+Both are now recorded. Server-reported latency is the fair basis for comparing
+models, because it is the part the model is responsible for. Client-measured
+round trip is what a caller actually waits for, and is the number that matters
+for capacity planning. Publishing one without the other invites the reader to
+use it for the wrong question.
+
+The general lesson is the reason the logging was worth turning on at all: the
+service's own telemetry is a check on your instrumentation, and here it caught
+an error of an order of magnitude.
+
 ## Temperature pinned at 0 for grading, swept separately
 
 The graded run pins temperature at 0 so scores reflect the model and not the

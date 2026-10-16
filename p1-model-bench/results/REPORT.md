@@ -1,24 +1,26 @@
 # Model bench results
 
-Generated 2026-10-16 17:04 UTC · region `us-east-1` · prices fetched 2026-10-16T16:37:22+00:00
+Generated 2026-10-16 17:39 UTC · region `us-east-1` · prices fetched 2026-10-16T16:37:22+00:00
 
 8 models, 20 graded cases each, temperature pinned at 0.
 
 
 ## Overall
 
-| Model | Score | Mean latency | p95 | Output tokens | This run | Per 10k requests | Price from |
-|---|---:|---:|---:|---:|---:|---:|---|
-| `nova-micro` | 17/20 (85%) | 533 ms | 1429 ms | 1185 | $0.00020 | $0.10 | pricing-api |
-| `nova-lite` | 16/20 (80%) | 491 ms | 650 ms | 763 | $0.00024 | $0.12 | pricing-api |
-| `nova-pro` | 16/20 (80%) | 826 ms | 1996 ms | 936 | $0.00376 | $1.88 | pricing-api |
-| `claude-haiku-4.5` | 0/20 (0%) | -- ms | -- ms | 0 | $0.00000 | $0.00 | manual |
-| `llama3-8b` | 16/20 (80%) | 615 ms | 1947 ms | 804 | $0.00084 | $0.42 | pricing-api |
-| `llama3.3-70b` | 17/20 (85%) | 617 ms | 1876 ms | 827 | $0.00176 | $0.88 | pricing-api |
-| `mistral-7b` | 9/20 (45%) | 631 ms | 1778 ms | 905 | $0.00037 | $0.18 | pricing-api |
-| `gpt-oss-20b` | 14/20 (70%) | 907 ms | 3375 ms | 3585 | $0.00124 | $0.62 | pricing-api |
+| Model | Score | Model latency | p95 | Round trip | Output tokens | This run | Per 10k | Price from |
+|---|---:|---:|---:|---:|---:|---:|---:|---|
+| `nova-micro` | 16/20 (80%) | 393 ms | 1112 ms | 557 ms | 1215 | $0.00020 | $0.10 | pricing-api |
+| `nova-lite` | 17/20 (85%) | 347 ms | 560 ms | 480 ms | 705 | $0.00023 | $0.11 | pricing-api |
+| `nova-pro` | 17/20 (85%) | 891 ms | 2337 ms | 997 ms | 1177 | $0.00453 | $2.27 | pricing-api |
+| `claude-haiku-4.5` | 0/20 (0%) | -- ms | -- ms | -- ms | 0 | $0.00000 | $0.00 | manual |
+| `llama3-8b` | 16/20 (80%) | 547 ms | 1876 ms | 653 ms | 804 | $0.00084 | $0.42 | pricing-api |
+| `llama3.3-70b` | 17/20 (85%) | 632 ms | 1805 ms | 733 ms | 739 | $0.00169 | $0.85 | pricing-api |
+| `mistral-7b` | 9/20 (45%) | 610 ms | 2282 ms | 715 ms | 905 | $0.00037 | $0.18 | pricing-api |
+| `gpt-oss-20b` | 16/20 (80%) | 934 ms | 3005 ms | 1050 ms | 3448 | $0.00120 | $0.60 | pricing-api |
 
-`Per 10k requests` is a projection from this run's measured token usage, not money spent. `This run` is what the twenty calls actually cost.
+**Model latency** is what Bedrock reports it spent, and is the fair basis for comparing models. **Round trip** is what this machine measured, including credential resolution, TLS and network. The gap is client-side and is not the model's fault: an early version of this report quoted only the round trip, which on the first call through a fresh client was 2570 ms against the model's actual 231 ms.
+
+`Per 10k` projects this run's measured token usage. `This run` is what the twenty calls actually cost.
 
 
 ## By task family
@@ -27,14 +29,14 @@ Deliberately not averaged into one number: these measure different abilities, an
 
 | Model | Ticket sentiment classification | Structured extraction to JSON | Length-constrained summary | Literal instruction following | Multi-step arithmetic reasoning |
 |---|---|---|---|---|---|
-| `nova-micro` | 83% | 100% | 100% | 100% | 33% |
-| `nova-lite` | 83% | 75% | 67% | 100% | 67% |
-| `nova-pro` | 67% | 75% | 100% | 100% | 67% |
+| `nova-micro` | 83% | 75% | 100% | 100% | 33% |
+| `nova-lite` | 83% | 75% | 100% | 100% | 67% |
+| `nova-pro` | 83% | 75% | 100% | 100% | 67% |
 | `claude-haiku-4.5` | 0% | 0% | 0% | 0% | 0% |
 | `llama3-8b` | 100% | 50% | 100% | 100% | 33% |
 | `llama3.3-70b` | 67% | 75% | 100% | 100% | 100% |
 | `mistral-7b` | 67% | 25% | 33% | 75% | 0% |
-| `gpt-oss-20b` | 83% | 75% | 33% | 75% | 67% |
+| `gpt-oss-20b` | 83% | 75% | 67% | 100% | 67% |
 
 ## Known measurement problems
 
@@ -63,14 +65,14 @@ Prompt: *Invent a name for a coffee shop. Reply with the name only.* · 5 repeat
 
 | Model | temp 0.0 | temp 1.0 |
 |---|---|---|
-| `nova-micro` | 1 | 4 |
-| `nova-lite` | 1 | 5 |
+| `nova-micro` | 2 | 3 |
+| `nova-lite` | 1 | 4 |
 | `nova-pro` | 1 | 4 |
 | `claude-haiku-4.5` | not measured | not measured |
-| `llama3-8b` | 1 | 4 |
+| `llama3-8b` | 1 | 5 |
 | `llama3.3-70b` | 1 | 2 |
-| `mistral-7b` | 1 | 3 |
-| `gpt-oss-20b` | 4 | 4 |
+| `mistral-7b` | 1 | 5 |
+| `gpt-oss-20b` | 3 | 5 |
 
 One distinct answer at temperature 0 is the expected result and is what makes the graded run above reproducible. More than one at temperature 1 shows the sampler doing its job.
 
@@ -78,7 +80,8 @@ One distinct answer at temperature 0 is the expected result and is what makes th
 
 These returned more than one distinct answer at temperature 0, which is the setting the graded run above relies on for reproducibility:
 
-- **`gpt-oss-20b`** — 4 distinct answers in 5 calls: ['Roast & Reverie', 'Perk & Ponder', 'Roast & Reverie', 'Caffeine Canvas', 'Bean & Quill']
+- **`nova-micro`** — 2 distinct answers in 5 calls: ['Brewed Awakenings', 'Brewed Awakenings', 'Brew Haven', 'Brewed Awakenings', 'Brewed Awakenings']
+- **`gpt-oss-20b`** — 3 distinct answers in 5 calls: ['Roast & Reverie', 'Bean & Quill', 'Bean & Quill', 'Roast & Reverie', 'Perk & Ponder']
 
 Temperature 0 means greedy decoding, always take the highest-probability token. It does not mean the same answer every time, because on a distributed serving stack the ranking of two near-equal tokens can depend on batching, hardware and floating point order. The guarantee is about the sampler, not about the infrastructure under it.
 

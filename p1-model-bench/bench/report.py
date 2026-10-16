@@ -61,7 +61,13 @@ def summarise(rows: list[dict], models: dict, prices: dict) -> list[dict]:
         errors = len(model_rows) - len(good)
         truncated = sum(1 for r in good if r.get("stop_reason") == "max_tokens")
 
+        # Two different questions. Server latency is what the model spent and is
+        # the fair basis for comparing models. Client latency is what a caller
+        # waits for, and includes credential resolution, TLS and network, which
+        # on a cold client is seconds and nothing to do with the model.
         latencies = [r["latency_ms"] for r in good]
+        server_latencies = [r["server_latency_ms"] for r in good
+                            if r.get("server_latency_ms") is not None]
         input_tokens = sum(r["input_tokens"] for r in good)
         output_tokens = sum(r["output_tokens"] for r in good)
 
@@ -84,6 +90,11 @@ def summarise(rows: list[dict], models: dict, prices: dict) -> list[dict]:
             "truncated": truncated,
             "passed": sum(1 for r in model_rows if r["passed"]),
             "accuracy": sum(1 for r in model_rows if r["passed"]) / len(model_rows),
+            "server_latency_mean_ms": (statistics.mean(server_latencies)
+                                       if server_latencies else None),
+            "server_latency_p95_ms": (sorted(server_latencies)[int(len(server_latencies) * 0.95) - 1]
+                                      if len(server_latencies) >= 2
+                                      else (server_latencies[0] if server_latencies else None)),
             "latency_mean_ms": statistics.mean(latencies) if latencies else None,
             "latency_p95_ms": (sorted(latencies)[int(len(latencies) * 0.95) - 1]
                                if len(latencies) >= 2 else (latencies[0] if latencies else None)),
@@ -116,7 +127,8 @@ def fmt(value, spec: str, dash: str = "--") -> str:
 def write_csv(summary: list[dict], families: list[str]) -> None:
     columns = (["model", "model_id", "n", "passed", "accuracy"]
                + [f"acc_{f}" for f in families]
-               + ["latency_mean_ms", "latency_p95_ms", "input_tokens", "output_tokens",
+               + ["server_latency_mean_ms", "server_latency_p95_ms",
+                  "latency_mean_ms", "latency_p95_ms", "input_tokens", "output_tokens",
                   "run_cost_usd", "cost_per_10k_usd", "price_source", "errors", "truncated"])
     with (RESULTS / "results.csv").open("w", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=columns, extrasaction="ignore")
@@ -139,17 +151,24 @@ def build_markdown(summary: list[dict], tasks: dict, prices: dict, rows: list[di
 
     # --- headline -----------------------------------------------------------
     add("\n## Overall\n")
-    add("| Model | Score | Mean latency | p95 | Output tokens | This run | Per 10k requests | Price from |")
-    add("|---|---:|---:|---:|---:|---:|---:|---|")
+    add("| Model | Score | Model latency | p95 | Round trip | Output tokens | This run | Per 10k | Price from |")
+    add("|---|---:|---:|---:|---:|---:|---:|---:|---|")
     for s in summary:
         add(f"| `{s['model']}` | {s['passed']}/{s['n']} ({s['accuracy']:.0%}) "
-            f"| {fmt(s['latency_mean_ms'], '.0f')} ms | {fmt(s['latency_p95_ms'], '.0f')} ms "
+            f"| {fmt(s['server_latency_mean_ms'], '.0f')} ms "
+            f"| {fmt(s['server_latency_p95_ms'], '.0f')} ms "
+            f"| {fmt(s['latency_mean_ms'], '.0f')} ms "
             f"| {s['output_tokens']} "
             f"| ${fmt(s['run_cost_usd'], '.5f')} | ${fmt(s['cost_per_10k_usd'], '.2f')} "
             f"| {s['price_source']} |")
 
-    add("\n`Per 10k requests` is a projection from this run's measured token usage, not money spent. "
-        "`This run` is what the twenty calls actually cost.\n")
+    add("\n**Model latency** is what Bedrock reports it spent, and is the fair basis for "
+        "comparing models. **Round trip** is what this machine measured, including credential "
+        "resolution, TLS and network. The gap is client-side and is not the model's fault: an "
+        "early version of this report quoted only the round trip, which on the first call "
+        "through a fresh client was 2570 ms against the model's actual 231 ms.\n")
+    add("`Per 10k` projects this run's measured token usage. `This run` is what the twenty "
+        "calls actually cost.\n")
 
     # --- per family ---------------------------------------------------------
     add("\n## By task family\n")

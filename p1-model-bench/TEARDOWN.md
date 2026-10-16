@@ -10,7 +10,7 @@ the later projects in this repository are not so forgiving.
 |---|---|---|
 | Model invocation log group | CloudWatch Logs, `/aws/bedrock/modelinvocations` | Storage only, pennies |
 | Invocation logging config | Bedrock → Settings | No |
-| Bedrock model access grants | Bedrock → Model access | No |
+| Model invocation entitlements | Automatic on first invoke, no page to visit | No |
 | IAM service role for logging | Created by the console when logging was enabled | No |
 
 No endpoints, no Provisioned Throughput, no SageMaker domain, no vector store,
@@ -29,10 +29,12 @@ Actions → **Delete log group(s)**.
 Do this second. Deleting the log group while logging is still on just means
 Bedrock recreates it on the next call.
 
-**3. Leave model access alone.**
-Granting access to a foundation model costs nothing. Revoking it means
-re-requesting later, and for Anthropic that means filling in the use case form
-again and waiting. Leave it enabled.
+**3. There is no model access to revoke.**
+The Bedrock Model access page has been retired. Serverless foundation models are
+enabled automatically the first time an account invokes them, so there is no
+grant to undo and nothing accrues from having invoked one. Access is controlled
+through IAM policies and SCPs instead, which is where to look if you want to
+restrict it.
 
 **4. Confirm the spend.**
 Billing and Cost Management → **Cost Explorer** → filter Service = *Amazon

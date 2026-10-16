@@ -1,28 +1,28 @@
 {
   "prompt": "Invent a name for a coffee shop. Reply with the name only.",
   "repeats": 5,
-  "ran_at": "2026-10-16T17:03:39+00:00",
+  "ran_at": "2026-10-16T17:39:57+00:00",
   "results": {
     "nova-micro": {
       "0.0": {
         "answers": [
           "Brewed Awakenings",
           "Brewed Awakenings",
-          "Brewed Awakenings",
+          "Brew Haven",
           "Brewed Awakenings",
           "Brewed Awakenings"
         ],
-        "distinct": 1
+        "distinct": 2
       },
       "1.0": {
         "answers": [
           "Brewed Awakenings",
-          "Brew & Bloom Caf\u00e9",
-          "Java Haven",
+          "Brewed Awakenings",
           "Brew Haven",
+          "Brew & Bliss",
           "Brewed Awakenings"
         ],
-        "distinct": 4
+        "distinct": 3
       }
     },
     "nova-lite": {
@@ -38,13 +38,13 @@
       },
       "1.0": {
         "answers": [
-          "Brewtique",
-          "Brew & Bloom",
-          "Bean Harmony Caf\u00e9",
+          "Serendipity Sips",
           "\"Bean Bliss Caf\u00e9\"",
-          "Brewed Awakenings"
+          "\"Brew & Muse Caf\u00e9\"",
+          "Brew Haven",
+          "\"Bean Bliss Caf\u00e9\""
         ],
-        "distinct": 5
+        "distinct": 4
       }
     },
     "nova-pro": {
@@ -60,11 +60,11 @@
       },
       "1.0": {
         "answers": [
-          "\"Brew Haven\"",
-          "\"Caf\u00e9 Elixir Beans.\"",
           "Brew Haven.",
-          "Caffe Bella Vita.",
-          "Brew Haven."
+          "BrewHaven Cafe.",
+          "Brew Haven Caf\u00e9.",
+          "Brew Haven.",
+          "Brew Haven"
         ],
         "distinct": 4
       }
@@ -104,13 +104,13 @@
       },
       "1.0": {
         "answers": [
-          "Brewtiful Minds",
-          "BrewMaster's Wife",
-          "Brewtiful Minds",
-          "Brewvie",
-          "Brewstone Co."
+          "Brewtiful Day Caf\u00e9",
+          "Brewtiful Day",
+          "Brewtopia",
+          "Brewed Awakening",
+          "\"Bean Scene\""
         ],
-        "distinct": 4
+        "distinct": 5
       }
     },
     "llama3.3-70b": {
@@ -126,9 +126,9 @@
       },
       "1.0": {
         "answers": [
-          "Brewed Awakening",
           "Brewed Awakening Co.",
           "Brewed Awakening",
+          "Brewed Awakening Co.",
           "Brewed Awakening",
           "Brewed Awakening"
         ],
@@ -148,35 +148,35 @@
       },
       "1.0": {
         "answers": [
-          "Bean's Haven\n\nOr, if you prefer something more whimsical:\n\nFancyBean's Dreamland Cafe",
           "Bean's Blissful Retreat",
-          "Bean's Blissful Retreat",
-          "Bean's Blissful Retreat",
-          "Bean Scene: Aroma's Sanctuary"
+          "Bean's Blissful Retreat.\n\n(Note: I don't have the ability to invent names based on specific locations, themes or cuisine type, but I can create a general name for a coffee shop that sounds inviting and cozy. Feel free to modify or expand upon it as needed for your business.)",
+          "Bean Scene Coffeehouse",
+          "Bean's Haven\n\nOr\n\nMug's Cozy Corner\n\nOr\n\nBrewtopia Coffeehouse\n\nOr\n\nJittery Java Junction\n\nOr\n\nCaffeinated Cottage\n\nChoose the one you like best!",
+          "Bean's Haven\n\nOr, if you prefer a more whimsical name:\n\nMug's Delight"
         ],
-        "distinct": 3
+        "distinct": 5
       }
     },
     "gpt-oss-20b": {
       "0.0": {
         "answers": [
           "Roast & Reverie",
-          "Perk & Ponder",
+          "Bean & Quill",
+          "Bean & Quill",
           "Roast & Reverie",
-          "Caffeine Canvas",
-          "Bean & Quill"
+          "Perk & Ponder"
         ],
-        "distinct": 4
+        "distinct": 3
       },
       "1.0": {
         "answers": [
-          "Cafe Quattro Bean",
-          "Mocha Muse",
-          "Bean & Quill",
-          "Bean & Quill",
-          "Roast & Toast"
+          "Sunrise Brew Hut",
+          "Brewed Awakening",
+          "Brew & Bloom",
+          "Brewtopia",
+          "Mug & Murmur"
         ],
-        "distinct": 4
+        "distinct": 5
       }
     }
   }

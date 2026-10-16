@@ -27,95 +27,22 @@ import time
 from datetime import datetime, timezone
 from pathlib import Path
 
-import boto3
-from botocore.config import Config
-from botocore.exceptions import ClientError
-
+import bench._path  # noqa: F401  -- puts the repo root on sys.path for shared/
 from bench.tasks import iter_cases, load_tasks, score
+from shared.bedrock import client as bedrock_client
+from shared.bedrock import converse as bedrock_converse
 
 ROOT = Path(__file__).resolve().parent.parent
 CONFIG = ROOT / "config"
 RESULTS = ROOT / "results"
-
-MAX_ATTEMPTS = 5
 
 
 def load_models() -> dict:
     return json.loads((CONFIG / "models.json").read_text())
 
 
-def make_client(region: str):
-    # Retries are handled in this module so that throttling delays never land in
-    # the latency numbers; botocore's own retrying would hide them inside the call.
-    return boto3.Session(profile_name="personal", region_name=region).client(
-        "bedrock-runtime",
-        config=Config(retries={"max_attempts": 1}, read_timeout=120),
-    )
-
-
-def converse(client, model_id: str, system: str, prompt: str, max_tokens: int,
-             temperature: float) -> dict:
-    """One graded call. Returns timing, token counts and the text, or an error."""
-    messages = [{"role": "user", "content": [{"text": prompt}]}]
-    kwargs = {
-        "modelId": model_id,
-        "messages": messages,
-        "inferenceConfig": {"maxTokens": max_tokens, "temperature": temperature},
-    }
-    if system:
-        kwargs["system"] = [{"text": system}]
-
-    folded_system = False
-
-    for attempt in range(1, MAX_ATTEMPTS + 1):
-        started = time.perf_counter()
-        try:
-            response = client.converse(**kwargs)
-        except ClientError as exc:
-            code = exc.response["Error"]["Code"]
-
-            # Fold the system prompt into the user turn for models that reject it.
-            if code == "ValidationException" and "system" in kwargs and not folded_system:
-                message = str(exc).lower()
-                if "system" in message:
-                    kwargs.pop("system")
-                    kwargs["messages"] = [
-                        {"role": "user", "content": [{"text": f"{system}\n\n{prompt}"}]}
-                    ]
-                    folded_system = True
-                    continue
-
-            if code in ("ThrottlingException", "ModelTimeoutException",
-                        "ServiceUnavailableException", "InternalServerException"):
-                if attempt < MAX_ATTEMPTS:
-                    time.sleep(min(2 ** attempt, 20) + random.random())
-                    continue
-
-            return {"error": f"{code}: {exc.response['Error'].get('Message', '')[:200]}",
-                    "attempts": attempt, "system_folded": folded_system}
-
-        latency_ms = (time.perf_counter() - started) * 1000
-        usage = response["usage"]
-        text = "".join(
-            block.get("text", "")
-            for block in response["output"]["message"]["content"]
-        )
-        return {
-            "text": text,
-            "latency_ms": round(latency_ms, 1),
-            "input_tokens": usage["inputTokens"],
-            "output_tokens": usage["outputTokens"],
-            "stop_reason": response.get("stopReason"),
-            "attempts": attempt,
-            "system_folded": folded_system,
-        }
-
-    return {"error": "exhausted retries", "attempts": MAX_ATTEMPTS,
-            "system_folded": folded_system}
-
-
 def run_suite(models: dict, tasks: dict, out_path: Path) -> int:
-    client = make_client(models["region"])
+    client = bedrock_client(region=models["region"])
     cases = list(iter_cases(tasks))
     rows = []
 
@@ -127,13 +54,13 @@ def run_suite(models: dict, tasks: dict, out_path: Path) -> int:
             # per-model floor keeps the suite from grading an empty string.
             max_tokens = max(family["max_tokens"], model.get("max_tokens_floor", 0))
 
-            result = converse(
-                client, model_id,
+            response = bedrock_converse(
+                client, model_id, case["prompt"],
                 system=family.get("system", ""),
-                prompt=case["prompt"],
                 max_tokens=max_tokens,
                 temperature=0.0,
             )
+            result = response.as_dict()
 
             row = {
                 "model": key,
@@ -153,7 +80,7 @@ def run_suite(models: dict, tasks: dict, out_path: Path) -> int:
                 row["reason"] = reason
                 mark = "ok  " if passed else "MISS"
                 print(f"  {family['id']:10} {case['id']:4} {mark} "
-                      f"{result['latency_ms']:7.0f}ms  "
+                      f"{result['server_latency_ms'] or result['latency_ms']:6.0f}ms  "
                       f"{result['input_tokens']:4}in/{result['output_tokens']:4}out  {reason[:50]}")
 
             rows.append(row)
@@ -188,7 +115,7 @@ def run_sweep(models: dict, tasks: dict, out_path: Path) -> None:
     answer, not that the parameter was ignored.
     """
     config = tasks["temperature_sweep"]
-    client = make_client(models["region"])
+    client = bedrock_client(region=models["region"])
     sweep = {}
 
     for model in models["models"]:
@@ -197,13 +124,13 @@ def run_sweep(models: dict, tasks: dict, out_path: Path) -> None:
         for temperature in config["temperatures"]:
             answers = []
             for _ in range(config["repeats"]):
-                result = converse(
-                    client, model["model_id"], system="",
-                    prompt=config["prompt"],
+                response = bedrock_converse(
+                    client, model["model_id"], config["prompt"],
                     max_tokens=config["max_tokens"],
                     temperature=temperature,
                 )
-                answers.append(result.get("text", f"ERROR {result.get('error','')}").strip())
+                answers.append(response.text.strip() if response.ok
+                               else f"ERROR {response.error}")
             sweep[key][str(temperature)] = {
                 "answers": answers,
                 "distinct": len(set(a.lower() for a in answers)),
