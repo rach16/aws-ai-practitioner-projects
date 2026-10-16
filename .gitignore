@@ -6,3 +6,6 @@ venv/
 .DS_Store
 *.sqlite
 *.db
+
+# per-machine config: bucket names are account-identifying
+**/config/local.json

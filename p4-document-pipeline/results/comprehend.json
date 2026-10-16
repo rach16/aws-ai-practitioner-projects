@@ -1,0 +1,553 @@
+{
+  "invoice": {
+    "language": {
+      "code": "en",
+      "score": 0.882
+    },
+    "entities": [
+      {
+        "type": "ORGANIZATION",
+        "text": "Meridian Supply Co.",
+        "score": 0.949
+      },
+      {
+        "type": "LOCATION",
+        "text": "118",
+        "score": 0.933
+      },
+      {
+        "type": "LOCATION",
+        "text": "Kesteven Way, Portland, OR 97204",
+        "score": 0.872
+      },
+      {
+        "type": "OTHER",
+        "text": "billing@meridiansupply.example - 555-0182",
+        "score": 0.789
+      },
+      {
+        "type": "OTHER",
+        "text": "INV-2026-0417",
+        "score": 0.902
+      },
+      {
+        "type": "DATE",
+        "text": "2026-03-14",
+        "score": 0.968
+      },
+      {
+        "type": "DATE",
+        "text": "2026-04-13",
+        "score": 0.99
+      },
+      {
+        "type": "ORGANIZATION",
+        "text": "Harlow Analytics Ltd",
+        "score": 0.997
+      },
+      {
+        "type": "QUANTITY",
+        "text": "4\n620.00",
+        "score": 0.841
+      },
+      {
+        "type": "QUANTITY",
+        "text": "2,480.00",
+        "score": 0.819
+      },
+      {
+        "type": "QUANTITY",
+        "text": "6\n145.00\n870.00",
+        "score": 0.664
+      },
+      {
+        "type": "QUANTITY",
+        "text": "60cm",
+        "score": 0.995
+      },
+      {
+        "type": "QUANTITY",
+        "text": "15\n98.00\n1,470.00",
+        "score": 0.863
+      },
+      {
+        "type": "QUANTITY",
+        "text": "$4,820.00",
+        "score": 0.986
+      },
+      {
+        "type": "QUANTITY",
+        "text": "9%",
+        "score": 0.94
+      },
+      {
+        "type": "QUANTITY",
+        "text": "$433.80",
+        "score": 0.989
+      },
+      {
+        "type": "QUANTITY",
+        "text": "$5,253.80",
+        "score": 0.999
+      },
+      {
+        "type": "QUANTITY",
+        "text": "30 days",
+        "score": 0.917
+      },
+      {
+        "type": "QUANTITY",
+        "text": "1.5% monthly",
+        "score": 0.888
+      }
+    ],
+    "pii": [
+      {
+        "type": "ADDRESS",
+        "score": 1.0,
+        "span": [
+          28,
+          64
+        ],
+        "source": "comprehend"
+      },
+      {
+        "type": "EMAIL",
+        "score": 1.0,
+        "span": [
+          65,
+          95
+        ],
+        "source": "comprehend"
+      },
+      {
+        "type": "PHONE",
+        "score": 1.0,
+        "span": [
+          98,
+          106
+        ],
+        "source": "backstop"
+      },
+      {
+        "type": "DATE_TIME",
+        "score": 1.0,
+        "span": [
+          151,
+          161
+        ],
+        "source": "comprehend"
+      },
+      {
+        "type": "DATE_TIME",
+        "score": 1.0,
+        "span": [
+          172,
+          182
+        ],
+        "source": "comprehend"
+      }
+    ],
+    "backstop_caught": [
+      {
+        "type": "PHONE",
+        "text": "555-0182"
+      }
+    ],
+    "pii_skipped_below_threshold": [],
+    "key_phrases": [
+      "Late payments",
+      "1.5%",
+      "INV-2026-0417",
+      "9%",
+      "INVOICE\nMeridian Supply Co.\n118",
+      "555-0182\nInvoice Number",
+      "$5,253.80\nPayment",
+      "30 days"
+    ],
+    "redacted_text": "INVOICE\nMeridian Supply Co.\n[ADDRESS]\n[EMAIL] - [PHONE]\nInvoice Number:\nINV-2026-0417\nInvoice Date:\n[DATE_TIME]\nDue Date:\n[DATE_TIME]\nBill To:\nHarlow Analytics Ltd\nDescription\nQty\nUnit\nAmount\nStanding desk frame\n4\n620.00\n2,480.00\nMonitor arm, dual\n6\n145.00\n870.00\nAcoustic panel, 60cm\n15\n98.00\n1,470.00\nSubtotal\n$4,820.00\nTax (9%)\n$433.80\nTotal Due\n$5,253.80\nPayment due within 30 days. Late payments accrue 1.5% monthly."
+  },
+  "paystub": {
+    "language": {
+      "code": "en",
+      "score": 0.99
+    },
+    "entities": [
+      {
+        "type": "ORGANIZATION",
+        "text": "Northbank Logistics",
+        "score": 0.8
+      },
+      {
+        "type": "PERSON",
+        "text": "Dana Whitfield",
+        "score": 0.999
+      },
+      {
+        "type": "OTHER",
+        "text": "EMP-55213",
+        "score": 0.986
+      },
+      {
+        "type": "OTHER",
+        "text": "900-55-8907",
+        "score": 0.999
+      },
+      {
+        "type": "DATE",
+        "text": "2026-02-28",
+        "score": 0.935
+      },
+      {
+        "type": "QUANTITY",
+        "text": "$5,400.00",
+        "score": 0.997
+      },
+      {
+        "type": "QUANTITY",
+        "text": "$918.00",
+        "score": 0.999
+      },
+      {
+        "type": "QUANTITY",
+        "text": "$334.80",
+        "score": 0.999
+      },
+      {
+        "type": "QUANTITY",
+        "text": "$78.30",
+        "score": 0.998
+      },
+      {
+        "type": "QUANTITY",
+        "text": "$201.48",
+        "score": 0.998
+      },
+      {
+        "type": "QUANTITY",
+        "text": "$3,867.42",
+        "score": 0.993
+      }
+    ],
+    "pii": [
+      {
+        "type": "NAME",
+        "score": 1.0,
+        "span": [
+          57,
+          71
+        ],
+        "source": "comprehend"
+      },
+      {
+        "type": "SSN",
+        "score": 0.982,
+        "span": [
+          119,
+          130
+        ],
+        "source": "comprehend"
+      },
+      {
+        "type": "DATE_TIME",
+        "score": 1.0,
+        "span": [
+          150,
+          160
+        ],
+        "source": "comprehend"
+      }
+    ],
+    "backstop_caught": [],
+    "pii_skipped_below_threshold": [],
+    "key_phrases": [
+      "$201.48",
+      "Earnings\nEmployee Name",
+      "$918.00",
+      "This document",
+      "All names and identifiers",
+      "Dana Whitfield\nEmployee ID",
+      "$3,867.42",
+      "Northbank Logistics\nStatement"
+    ],
+    "redacted_text": "Northbank Logistics\nStatement of Earnings\nEmployee Name:\n[NAME]\nEmployee ID:\nEMP-55213\nSocial Security Number:\n[SSN]\nPay Period Ending:\n[DATE_TIME]\nEarnings\nGross Pay\n$5,400.00\nDeductions\nFederal income tax\n-$918.00\nSocial security\n-$334.80\nMedicare\n-$78.30\nHealth plan\n-$201.48\nNet Pay\n$3,867.42\nThis document is synthetic. All names and identifiers are invented."
+  },
+  "letter": {
+    "language": {
+      "code": "en",
+      "score": 0.996
+    },
+    "entities": [
+      {
+        "type": "ORGANIZATION",
+        "text": "Fenwick Road Practice",
+        "score": 0.965
+      },
+      {
+        "type": "LOCATION",
+        "text": "41 Fenwick Road, Dorchester",
+        "score": 0.833
+      },
+      {
+        "type": "OTHER",
+        "text": "2026-01-22",
+        "score": 0.648
+      },
+      {
+        "type": "PERSON",
+        "text": "Marcus Bell",
+        "score": 0.992
+      },
+      {
+        "type": "LOCATION",
+        "text": "8",
+        "score": 0.425
+      },
+      {
+        "type": "LOCATION",
+        "text": "Brackley",
+        "score": 0.638
+      },
+      {
+        "type": "LOCATION",
+        "text": "Dorchester",
+        "score": 0.943
+      },
+      {
+        "type": "OTHER",
+        "text": "DT1 2QS",
+        "score": 0.408
+      },
+      {
+        "type": "PERSON",
+        "text": "Bell",
+        "score": 0.992
+      },
+      {
+        "type": "ORGANIZATION",
+        "text": "Fenwick Road Practice",
+        "score": 0.987
+      },
+      {
+        "type": "DATE",
+        "text": "22 January 2026",
+        "score": 0.999
+      },
+      {
+        "type": "QUANTITY",
+        "text": "128",
+        "score": 0.997
+      },
+      {
+        "type": "QUANTITY",
+        "text": "over 82",
+        "score": 0.551
+      },
+      {
+        "type": "DATE",
+        "text": "November",
+        "score": 0.999
+      },
+      {
+        "type": "QUANTITY",
+        "text": "4.9 mmol/L",
+        "score": 0.981
+      },
+      {
+        "type": "DATE",
+        "text": "9 February 2026 at",
+        "score": 0.953
+      },
+      {
+        "type": "DATE",
+        "text": "10:30",
+        "score": 0.674
+      },
+      {
+        "type": "OTHER",
+        "text": "555-0133",
+        "score": 0.999
+      },
+      {
+        "type": "OTHER",
+        "text": "reception@fenwickroad.example",
+        "score": 0.967
+      },
+      {
+        "type": "LOCATION",
+        "text": "Dorchester",
+        "score": 0.901
+      },
+      {
+        "type": "PERSON",
+        "text": "Dr.",
+        "score": 0.844
+      },
+      {
+        "type": "PERSON",
+        "text": "Imogen Clarke",
+        "score": 0.999
+      }
+    ],
+    "pii": [
+      {
+        "type": "ADDRESS",
+        "score": 1.0,
+        "span": [
+          22,
+          49
+        ],
+        "source": "comprehend"
+      },
+      {
+        "type": "DATE_TIME",
+        "score": 1.0,
+        "span": [
+          50,
+          60
+        ],
+        "source": "comprehend"
+      },
+      {
+        "type": "NAME",
+        "score": 1.0,
+        "span": [
+          61,
+          72
+        ],
+        "source": "comprehend"
+      },
+      {
+        "type": "ADDRESS",
+        "score": 1.0,
+        "span": [
+          73,
+          89
+        ],
+        "source": "comprehend"
+      },
+      {
+        "type": "ADDRESS",
+        "score": 0.945,
+        "span": [
+          90,
+          108
+        ],
+        "source": "comprehend"
+      },
+      {
+        "type": "NAME",
+        "score": 0.999,
+        "span": [
+          117,
+          121
+        ],
+        "source": "comprehend"
+      },
+      {
+        "type": "DATE_TIME",
+        "score": 0.999,
+        "span": [
+          176,
+          191
+        ],
+        "source": "comprehend"
+      },
+      {
+        "type": "DATE_TIME",
+        "score": 1.0,
+        "span": [
+          376,
+          377
+        ],
+        "source": "comprehend"
+      },
+      {
+        "type": "DATE_TIME",
+        "score": 1.0,
+        "span": [
+          378,
+          391
+        ],
+        "source": "comprehend"
+      },
+      {
+        "type": "DATE_TIME",
+        "score": 1.0,
+        "span": [
+          395,
+          400
+        ],
+        "source": "comprehend"
+      },
+      {
+        "type": "PHONE",
+        "score": 0.998,
+        "span": [
+          541,
+          549
+        ],
+        "source": "comprehend"
+      },
+      {
+        "type": "EMAIL",
+        "score": 1.0,
+        "span": [
+          565,
+          594
+        ],
+        "source": "comprehend"
+      },
+      {
+        "type": "ADDRESS",
+        "score": 0.59,
+        "span": [
+          627,
+          637
+        ],
+        "source": "comprehend"
+      },
+      {
+        "type": "NAME",
+        "score": 1.0,
+        "span": [
+          715,
+          728
+        ],
+        "source": "comprehend"
+      }
+    ],
+    "backstop_caught": [],
+    "pii_skipped_below_threshold": [
+      {
+        "type": "ADDRESS",
+        "score": 0.59,
+        "span": [
+          627,
+          637
+        ],
+        "original_length": 10
+      }
+    ],
+    "key_phrases": [
+      "November",
+      "the medication",
+      "the next appointment",
+      "the current dose",
+      "Your blood pressure",
+      "the move",
+      "the reading",
+      "your cholesterol"
+    ],
+    "redacted_text": "Fenwick Road Practice\n[ADDRESS]\n[DATE_TIME]\n[NAME]\n[ADDRESS]\n[ADDRESS]\nDear Mr [NAME],\nThank you for attending the Fenwick Road Practice on [DATE_TIME].\nYour blood pressure was 128 over 82, which is a clear improvement on\nthe reading taken in November, and your cholesterol has come down to\n4.9 mmol/L.\nI would like to see you again on [DATE_TIME] [DATE_TIME] at [DATE_TIME] to review\nthe medication. Please continue the current dose until then. If you\nhave questions before that date you can reach the practice on\n[PHONE] or by email at [EMAIL]\nI was sorry to hear the move to Dorchester has been stressful. Do\nmention it at the next appointment.\nKind regards,\nDr. [NAME]\nThis document is synthetic. All names and identifiers are invented.",
+    "sentiment": {
+      "label": "NEUTRAL",
+      "scores": {
+        "Positive": 0.089,
+        "Negative": 0.0,
+        "Neutral": 0.91,
+        "Mixed": 0.0
+      }
+    }
+  }
+}

@@ -1,0 +1,370 @@
+{
+  "invoice": {
+    "pages": 1,
+    "queries": {
+      "invoice_number": {
+        "answer": "INV-2026-0417",
+        "confidence": 96.0
+      },
+      "invoice_date": {
+        "answer": "2026-03-14",
+        "confidence": 99.0
+      },
+      "due_date": {
+        "answer": "2026-04-13",
+        "confidence": 99.0
+      },
+      "vendor_name": {
+        "answer": "Meridian Supply Co.",
+        "confidence": 99.0
+      },
+      "customer_name": {
+        "answer": "Harlow Analytics Ltd",
+        "confidence": 100.0
+      },
+      "total_usd": {
+        "answer": "$5,253.80",
+        "confidence": 95.0
+      },
+      "subtotal_usd": {
+        "answer": "$4,820.00",
+        "confidence": 99.0
+      },
+      "tax_usd": {
+        "answer": "(9%)",
+        "confidence": 79.0
+      },
+      "contact_email": {
+        "answer": "billing@meridiansupply.example.",
+        "confidence": 25.0
+      },
+      "contact_phone": {
+        "answer": null,
+        "confidence": null
+      }
+    },
+    "forms": [
+      {
+        "key": "Payment",
+        "value": "",
+        "key_confidence": 70.37,
+        "value_confidence": 70.37
+      },
+      {
+        "key": "Bill To:",
+        "value": "Harlow Analytics Ltd",
+        "key_confidence": 95.51,
+        "value_confidence": 95.51
+      },
+      {
+        "key": "Invoice Date:",
+        "value": "2026-03-14",
+        "key_confidence": 95.66,
+        "value_confidence": 95.66
+      },
+      {
+        "key": "Total Due",
+        "value": "$5,253.80",
+        "key_confidence": 95.3,
+        "value_confidence": 95.3
+      },
+      {
+        "key": "Due Date:",
+        "value": "2026-04-13",
+        "key_confidence": 95.68,
+        "value_confidence": 95.68
+      },
+      {
+        "key": "Invoice Number:",
+        "value": "INV-2026-0417",
+        "key_confidence": 95.63,
+        "value_confidence": 95.63
+      },
+      {
+        "key": "Tax (9%)",
+        "value": "$433.80",
+        "key_confidence": 89.59,
+        "value_confidence": 89.59
+      },
+      {
+        "key": "Subtotal",
+        "value": "$4,820.00",
+        "key_confidence": 95.42,
+        "value_confidence": 95.42
+      },
+      {
+        "key": "due within 30 days. Late payments accrue",
+        "value": "1.5% monthly.",
+        "key_confidence": 59.47,
+        "value_confidence": 59.47
+      },
+      {
+        "key": "Meridian Supply Co.",
+        "value": "118 Kesteven Way, Portland, OR 97204 billing@meridiansupply.example - 555-0182",
+        "key_confidence": 54.02,
+        "value_confidence": 54.02
+      }
+    ],
+    "tables": [
+      [
+        [
+          "Invoice Number:",
+          "INV-2026-0417"
+        ],
+        [
+          "Invoice Date:",
+          "2026-03-14"
+        ],
+        [
+          "Due Date:",
+          "2026-04-13"
+        ],
+        [
+          "Bill To:",
+          "Harlow Analytics Ltd"
+        ]
+      ],
+      [
+        [
+          "Description",
+          "Qty",
+          "Unit",
+          "Amount"
+        ],
+        [
+          "Standing desk frame",
+          "4",
+          "620.00",
+          "2,480.00"
+        ],
+        [
+          "Monitor arm, dual",
+          "6",
+          "145.00",
+          "870.00"
+        ],
+        [
+          "Acoustic panel, 60cm",
+          "15",
+          "98.00",
+          "1,470.00"
+        ],
+        [
+          "",
+          "",
+          "Subtotal",
+          "$4,820.00"
+        ],
+        [
+          "",
+          "",
+          "Tax (9%)",
+          "$433.80"
+        ],
+        [
+          "",
+          "",
+          "Total Due",
+          "$5,253.80"
+        ]
+      ]
+    ],
+    "text": "INVOICE\nMeridian Supply Co.\n118 Kesteven Way, Portland, OR 97204\nbilling@meridiansupply.example - 555-0182\nInvoice Number:\nINV-2026-0417\nInvoice Date:\n2026-03-14\nDue Date:\n2026-04-13\nBill To:\nHarlow Analytics Ltd\nDescription\nQty\nUnit\nAmount\nStanding desk frame\n4\n620.00\n2,480.00\nMonitor arm, dual\n6\n145.00\n870.00\nAcoustic panel, 60cm\n15\n98.00\n1,470.00\nSubtotal\n$4,820.00\nTax (9%)\n$433.80\nTotal Due\n$5,253.80\nPayment due within 30 days. Late payments accrue 1.5% monthly.",
+    "block_count": 184
+  },
+  "paystub": {
+    "pages": 1,
+    "queries": {
+      "employee_name": {
+        "answer": "Dana Whitfield",
+        "confidence": 100.0
+      },
+      "employee_id": {
+        "answer": "EMP-55213",
+        "confidence": 98.0
+      },
+      "ssn": {
+        "answer": "900-55-8907",
+        "confidence": 99.0
+      },
+      "pay_period_end": {
+        "answer": "2026-02-28",
+        "confidence": 98.0
+      },
+      "gross_pay_usd": {
+        "answer": "$5,400.00",
+        "confidence": 96.0
+      },
+      "net_pay_usd": {
+        "answer": "$3,867.42",
+        "confidence": 95.0
+      },
+      "employer_name": {
+        "answer": null,
+        "confidence": null
+      }
+    },
+    "forms": [
+      {
+        "key": "Earnings",
+        "value": "Gross Pay $5,400.00",
+        "key_confidence": 18.79,
+        "value_confidence": 18.79
+      },
+      {
+        "key": "Medicare",
+        "value": "-$78.30",
+        "key_confidence": 94.96,
+        "value_confidence": 94.96
+      },
+      {
+        "key": "Employee Name:",
+        "value": "Dana Whitfield",
+        "key_confidence": 95.37,
+        "value_confidence": 95.37
+      },
+      {
+        "key": "Social security",
+        "value": "-$334.80",
+        "key_confidence": 95.05,
+        "value_confidence": 95.05
+      },
+      {
+        "key": "Health plan",
+        "value": "-$201.48",
+        "key_confidence": 95.14,
+        "value_confidence": 95.14
+      },
+      {
+        "key": "Federal income tax",
+        "value": "-$918.00",
+        "key_confidence": 93.46,
+        "value_confidence": 93.46
+      },
+      {
+        "key": "Net Pay",
+        "value": "$3,867.42",
+        "key_confidence": 95.52,
+        "value_confidence": 95.52
+      },
+      {
+        "key": "Social Security Number:",
+        "value": "900-55-8907",
+        "key_confidence": 95.47,
+        "value_confidence": 95.47
+      },
+      {
+        "key": "Employee ID:",
+        "value": "EMP-55213",
+        "key_confidence": 95.13,
+        "value_confidence": 95.13
+      },
+      {
+        "key": "Pay Period Ending:",
+        "value": "2026-02-28",
+        "key_confidence": 95.01,
+        "value_confidence": 95.01
+      },
+      {
+        "key": "Statement of",
+        "value": "Earnings",
+        "key_confidence": 52.38,
+        "value_confidence": 52.38
+      }
+    ],
+    "tables": [
+      [
+        [
+          "Employee Name:",
+          "Dana Whitfield"
+        ],
+        [
+          "Employee ID:",
+          "EMP-55213"
+        ],
+        [
+          "Social Security Number:",
+          "900-55-8907"
+        ],
+        [
+          "Pay Period Ending:",
+          "2026-02-28"
+        ]
+      ],
+      [
+        [
+          "Gross Pay",
+          "$5,400.00"
+        ],
+        [
+          "Deductions",
+          ""
+        ],
+        [
+          "Federal income tax",
+          "-$918.00"
+        ],
+        [
+          "Social security",
+          "-$334.80"
+        ],
+        [
+          "Medicare",
+          "-$78.30"
+        ],
+        [
+          "Health plan",
+          "-$201.48"
+        ],
+        [
+          "Net Pay",
+          "$3,867.42"
+        ]
+      ]
+    ],
+    "text": "Northbank Logistics\nStatement of Earnings\nEmployee Name:\nDana Whitfield\nEmployee ID:\nEMP-55213\nSocial Security Number:\n900-55-8907\nPay Period Ending:\n2026-02-28\nEarnings\nGross Pay\n$5,400.00\nDeductions\nFederal income tax\n-$918.00\nSocial security\n-$334.80\nMedicare\n-$78.30\nHealth plan\n-$201.48\nNet Pay\n$3,867.42\nThis document is synthetic. All names and identifiers are invented.",
+    "block_count": 138
+  },
+  "letter": {
+    "pages": 1,
+    "queries": {
+      "sender_name": {
+        "answer": "Dr. Imogen Clarke",
+        "confidence": 97.0
+      },
+      "recipient_name": {
+        "answer": "Marcus Bell",
+        "confidence": 92.0
+      },
+      "letter_date": {
+        "answer": "22 January 2026",
+        "confidence": 97.0
+      },
+      "clinic_name": {
+        "answer": "Fenwick Road Practice",
+        "confidence": 98.0
+      },
+      "appointment_date": {
+        "answer": null,
+        "confidence": null
+      }
+    },
+    "forms": [
+      {
+        "key": "Kind regards,",
+        "value": "Dr. Imogen Clarke",
+        "key_confidence": 88.82,
+        "value_confidence": 88.82
+      },
+      {
+        "key": "Dear",
+        "value": "Mr Bell,",
+        "key_confidence": 74.68,
+        "value_confidence": 74.68
+      }
+    ],
+    "tables": [],
+    "text": "Fenwick Road Practice\n41 Fenwick Road, Dorchester\n2026-01-22\nMarcus Bell\n8 Brackley Close\nDorchester DT1 2QS\nDear Mr Bell,\nThank you for attending the Fenwick Road Practice on 22 January 2026.\nYour blood pressure was 128 over 82, which is a clear improvement on\nthe reading taken in November, and your cholesterol has come down to\n4.9 mmol/L.\nI would like to see you again on 9 February 2026 at 10:30 to review\nthe medication. Please continue the current dose until then. If you\nhave questions before that date you can reach the practice on\n555-0133 or by email at reception@fenwickroad.example\nI was sorry to hear the move to Dorchester has been stressful. Do\nmention it at the next appointment.\nKind regards,\nDr. Imogen Clarke\nThis document is synthetic. All names and identifiers are invented.",
+    "block_count": 169
+  }
+}

@@ -1,0 +1,114 @@
+{
+  "invoice": {
+    "s3_key": "p4-docs/invoice.png",
+    "job_id": "a41caadd960b62e455c175445e5b8b02fed98fe3568ea65bc9e68e60d67333e9",
+    "wall_seconds": 6.7,
+    "blocks": 122,
+    "queries": {
+      "customer_name": {
+        "answer": "Harlow Analytics Ltd",
+        "confidence": 100.0
+      },
+      "contact_phone": {
+        "answer": null,
+        "confidence": null
+      },
+      "due_date": {
+        "answer": "2026-04-13",
+        "confidence": 99.0
+      },
+      "subtotal_usd": {
+        "answer": "$4,820.00",
+        "confidence": 99.0
+      },
+      "vendor_name": {
+        "answer": "Meridian Supply Co.",
+        "confidence": 99.0
+      },
+      "total_usd": {
+        "answer": "$5,253.80",
+        "confidence": 95.0
+      },
+      "invoice_date": {
+        "answer": "2026-03-14",
+        "confidence": 99.0
+      },
+      "tax_usd": {
+        "answer": "(9%)",
+        "confidence": 79.0
+      },
+      "invoice_number": {
+        "answer": "INV-2026-0417",
+        "confidence": 96.0
+      },
+      "contact_email": {
+        "answer": "billing@meridiansupply.example.",
+        "confidence": 25.0
+      }
+    }
+  },
+  "paystub": {
+    "s3_key": "p4-docs/paystub.png",
+    "job_id": "166dbb91eb90a87975abde6fa1a3ae36c14f492019eff2289238e430ad78044a",
+    "wall_seconds": 9.7,
+    "blocks": 89,
+    "queries": {
+      "pay_period_end": {
+        "answer": "2026-02-28",
+        "confidence": 98.0
+      },
+      "gross_pay_usd": {
+        "answer": "$5,400.00",
+        "confidence": 96.0
+      },
+      "ssn": {
+        "answer": "900-55-8907",
+        "confidence": 99.0
+      },
+      "employee_id": {
+        "answer": "EMP-55213",
+        "confidence": 98.0
+      },
+      "employee_name": {
+        "answer": "Dana Whitfield",
+        "confidence": 100.0
+      },
+      "net_pay_usd": {
+        "answer": "$3,867.42",
+        "confidence": 95.0
+      },
+      "employer_name": {
+        "answer": null,
+        "confidence": null
+      }
+    }
+  },
+  "letter": {
+    "s3_key": "p4-docs/letter.png",
+    "job_id": "25df3aa923ebb322d0d2bc87de5bb793e312473382a23c574209c3787099add3",
+    "wall_seconds": 7.1,
+    "blocks": 165,
+    "queries": {
+      "clinic_name": {
+        "answer": "Fenwick Road Practice",
+        "confidence": 98.0
+      },
+      "letter_date": {
+        "answer": "22 January 2026",
+        "confidence": 97.0
+      },
+      "appointment_date": {
+        "answer": null,
+        "confidence": null
+      },
+      "sender_name": {
+        "answer": "Dr. Imogen Clarke",
+        "confidence": 97.0
+      },
+      "recipient_name": {
+        "answer": "Marcus Bell",
+        "confidence": 92.0
+      }
+    }
+  }
+}

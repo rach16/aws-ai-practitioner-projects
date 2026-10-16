@@ -1,0 +1,54 @@
+{
+  "invoice": {
+    "file": "invoice.png",
+    "fields": {
+      "invoice_number": "INV-2026-0417",
+      "invoice_date": "2026-03-14",
+      "due_date": "2026-04-13",
+      "vendor_name": "Meridian Supply Co.",
+      "customer_name": "Harlow Analytics Ltd",
+      "subtotal_usd": 4820.0,
+      "tax_usd": 433.8,
+      "total_usd": 5253.8,
+      "contact_email": "billing@meridiansupply.example",
+      "contact_phone": "555-0182"
+    },
+    "pii_expected": [
+      "EMAIL",
+      "PHONE"
+    ]
+  },
+  "paystub": {
+    "file": "paystub.png",
+    "fields": {
+      "employee_name": "Dana Whitfield",
+      "employee_id": "EMP-55213",
+      "ssn": "900-55-8907",
+      "pay_period_end": "2026-02-28",
+      "gross_pay_usd": 5400.0,
+      "net_pay_usd": 3867.42,
+      "employer_name": "Northbank Logistics"
+    },
+    "pii_expected": [
+      "NAME",
+      "SSN"
+    ]
+  },
+  "letter": {
+    "file": "letter.png",
+    "fields": {
+      "sender_name": "Dr. Imogen Clarke",
+      "recipient_name": "Marcus Bell",
+      "letter_date": "2026-01-22",
+      "clinic_name": "Fenwick Road Practice",
+      "appointment_date": "2026-02-09"
+    },
+    "pii_expected": [
+      "NAME",
+      "PHONE",
+      "EMAIL",
+      "ADDRESS"
+    ],
+    "note": "Free prose rather than a form. Textract's form extraction has almost nothing to grip here, which is the point: this is the document that belongs to Comprehend."
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "region": "us-east-1",
+  "fetched_at": "2026-10-16T19:21:55+00:00",
+  "textract": {
+    "ocr_only": {
+      "usd_per_page": 0.0015,
+      "usagetype": "USE1-SyncTextPagesProcessed",
+      "description": "DetectDocumentText: raw text, no structure",
+      "source": "pricing-api"
+    },
+    "queries_only": {
+      "usd_per_page": 0.015,
+      "usagetype": "USE1-SyncQueriesPagesProcessed",
+      "description": "AnalyzeDocument with QUERIES alone",
+      "source": "pricing-api"
+    },
+    "queries_tables": {
+      "usd_per_page": 0.02,
+      "usagetype": "USE1-SyncQueriesTablesPagesProcessed",
+      "description": "QUERIES + TABLES",
+      "source": "pricing-api"
+    },
+    "forms_only": {
+      "usd_per_page": 0.05,
+      "usagetype": "USE1-SyncFormsPagesProcessed",
+      "description": "FORMS alone",
+      "source": "pricing-api"
+    },
+    "all_three": {
+      "usd_per_page": 0.07,
+      "usagetype": "USE1-SyncFormsQueriesTablesPagesProcessed",
+      "description": "FORMS + TABLES + QUERIES",
+      "source": "pricing-api"
+    },
+    "async_all_three": {
+      "usd_per_page": 0.07,
+      "usagetype": "USE1-AsyncFormsQueriesTablesPagesProcessed",
+      "description": "Same, via S3",
+      "source": "pricing-api"
+    }
+  },
+  "comprehend": {
+    "usd_per_unit": 0.0001,
+    "chars_per_unit": 100,
+    "minimum_units_per_request": 3,
+    "source": "https://aws.amazon.com/comprehend/pricing/ (first 10M units tier)",
+    "checked": "2026-10-16",
+    "reason": "The AWS Pricing API returns no records for AmazonComprehend in us-east-1, so this rate is hand-entered and flagged rather than fetched. Each API call bills a 300-character minimum, so four calls against one short document cost more than one call against a document four times the length.",
+    "source_type": "manual"
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "_comment": "Copy to local.json and set your own bucket. local.json is gitignored: a bucket name is account-identifying and this repository is public.",
+  "bucket": "your-bucket-name-here",
+  "prefix": "p4-docs/"
+}
