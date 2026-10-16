@@ -1,0 +1,50 @@
+{
+  "documents": {
+    "README.md": 4909,
+    "p1-model-bench/README.md": 10094,
+    "p1-model-bench/DECISIONS.md": 8322,
+    "p1-model-bench/TEARDOWN.md": 2443,
+    "p4-document-pipeline/README.md": 8060,
+    "p4-document-pipeline/DECISIONS.md": 9794,
+    "p4-document-pipeline/TEARDOWN.md": 1992
+  },
+  "total_chars": 45614,
+  "strategies": {
+    "fixed-600": {
+      "chunks": 78,
+      "mean_chars": 584,
+      "min_chars": 191,
+      "max_chars": 708
+    },
+    "fixed-1200": {
+      "chunks": 40,
+      "mean_chars": 1140,
+      "min_chars": 193,
+      "max_chars": 1308
+    },
+    "fixed-2400": {
+      "chunks": 22,
+      "mean_chars": 2073,
+      "min_chars": 193,
+      "max_chars": 2509
+    },
+    "overlap-1200-200": {
+      "chunks": 47,
+      "mean_chars": 1143,
+      "min_chars": 321,
+      "max_chars": 1200
+    },
+    "heading-1200": {
+      "chunks": 66,
+      "mean_chars": 690,
+      "min_chars": 158,
+      "max_chars": 1295
+    },
+    "heading-2400": {
+      "chunks": 58,
+      "mean_chars": 785,
+      "min_chars": 214,
+      "max_chars": 2399
+    }
+  }
+}

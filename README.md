@@ -19,7 +19,7 @@ I passed AIF-C01 in September 2026. A certification shows familiarity; these sho
 | | Project | What it demonstrates | Status |
 |---|---|---|---|
 | **P1** | [Model Bench](./p1-model-bench) | Model selection by measured cost, latency and quality. Inference parameter sweeps. | **Done** |
-| **P2** | [RAG from scratch](./p2-rag-from-scratch) | Chunking, embeddings, vector search and citation-backed generation, with retrieval written by hand. | Planned |
+| **P2** | [RAG from scratch](./p2-rag-from-scratch) | Chunking, embeddings, vector search and citation-backed generation, all written by hand and measured against a no-retrieval control. | **Done** |
 | **P3** | [Guardrails](./p3-guardrails) | Denied topics, PII redaction and content filtering, with a model card for the RAG system. | Planned |
 | **P4** | [Document pipeline](./p4-document-pipeline) | Textract and Comprehend on unstructured documents, measured against a foundation model doing the same job. | **Done** |
 | **P5** | [Churn classifier](./p5-churn-classifier) | The full ML lifecycle with a real confusion matrix, precision, recall and F1. | Planned |

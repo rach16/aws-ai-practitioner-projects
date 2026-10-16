@@ -1,0 +1,251 @@
+{
+  "_comment": "Questions whose answers are in the corpus, each with a marker identifying the text that answers it. The marker is matched as a substring, which is what lets one question set score six different chunking strategies: whichever chunk contains the marker is the gold chunk for that strategy. A marker can land in more than one chunk, and that is treated as several acceptable answers rather than forced to be unique: with overlapping chunks it is unavoidable, and a retriever that finds any chunk containing the answer has done its job. 'answer_must_contain' is a list of groups checked against the generated answer; each group is satisfied by any one of its alternatives. The alternatives in 'answer_must_contain' were widened after the first run marked three plainly correct answers wrong for not echoing a particular word from the source, for example rejecting 'did not account for credential resolution and the TLS handshake' because it lacked the literal number 231. A grader that rewards copying the source measures verbosity and flatters the wordier model.",
+  "questions": [
+    {
+      "id": "q1",
+      "question": "Why was fine-tuning not built in these projects?",
+      "gold_marker": "Serving a fine-tuned model on Bedrock requires Provisioned Throughput",
+      "gold_source": "README.md",
+      "answer_must_contain": [
+        [
+          "provisioned throughput"
+        ],
+        [
+          "hundreds",
+          "expensive",
+          "cost"
+        ]
+      ]
+    },
+    {
+      "id": "q2",
+      "question": "Which model scored 20% when the correct result was 80%, and why?",
+      "gold_marker": "A model scored 20% when the right answer was 80%",
+      "gold_source": "p1-model-bench/README.md",
+      "answer_must_contain": [
+        [
+          "gpt-oss"
+        ],
+        [
+          "token",
+          "ceiling",
+          "reasoning",
+          "truncat",
+          "empty"
+        ]
+      ]
+    },
+    {
+      "id": "q3",
+      "question": "What was wrong with the original latency measurement?",
+      "gold_marker": "client had recorded **2570 ms**",
+      "gold_source": "p1-model-bench/README.md",
+      "answer_must_contain": [
+        [
+          "tls",
+          "credential",
+          "handshake",
+          "cold client",
+          "client-side",
+          "client side"
+        ]
+      ]
+    },
+    {
+      "id": "q4",
+      "question": "What did Comprehend fail to detect in the invoice?",
+      "gold_marker": "Comprehend missed a phone number, and my first explanation was wrong",
+      "gold_source": "p4-document-pipeline/README.md",
+      "answer_must_contain": [
+        [
+          "phone"
+        ]
+      ]
+    },
+    {
+      "id": "q5",
+      "question": "Why are the documents in the document pipeline synthetic rather than real?",
+      "gold_marker": "drawn in code from facts written down first",
+      "gold_source": "p4-document-pipeline/README.md",
+      "answer_must_contain": [
+        [
+          "public",
+          "pii",
+          "personal"
+        ],
+        [
+          "scor",
+          "ground truth",
+          "answer key"
+        ]
+      ]
+    },
+    {
+      "id": "q6",
+      "question": "What does Textract charge per page for FORMS, TABLES and QUERIES together?",
+      "gold_marker": "$0.07 for FORMS + TABLES + QUERIES",
+      "gold_source": "p4-document-pipeline/README.md",
+      "answer_must_contain": [
+        [
+          "0.07"
+        ]
+      ]
+    },
+    {
+      "id": "q7",
+      "question": "What is the confidence threshold for redacting PII, and what happens below it?",
+      "gold_marker": "REDACT_THRESHOLD",
+      "gold_source": "p4-document-pipeline/DECISIONS.md",
+      "answer_must_contain": [
+        [
+          "0.8"
+        ],
+        [
+          "review",
+          "surfaced",
+          "reported",
+          "not redacted"
+        ]
+      ]
+    },
+    {
+      "id": "q8",
+      "question": "Why was the Converse API chosen instead of InvokeModel?",
+      "gold_marker": "takes a request body in each",
+      "gold_source": "p1-model-bench/DECISIONS.md",
+      "answer_must_contain": [
+        [
+          "one shape",
+          "same shape",
+          "consistent",
+          "uniform"
+        ],
+        [
+          "schema",
+          "provider"
+        ]
+      ]
+    },
+    {
+      "id": "q9",
+      "question": "What did the temperature sweep reveal about determinism?",
+      "gold_marker": "not deterministic on every model",
+      "gold_source": "p1-model-bench/README.md",
+      "answer_must_contain": [
+        [
+          "gpt-oss",
+          "not deterministic",
+          "nondeterministic",
+          "non-deterministic"
+        ],
+        [
+          "temperature 0",
+          "temp 0",
+          "greedy",
+          "determinism"
+        ]
+      ]
+    },
+    {
+      "id": "q10",
+      "question": "How do you turn off Bedrock model invocation logging?",
+      "gold_marker": "Turn off model invocation logging",
+      "gold_source": "p1-model-bench/TEARDOWN.md",
+      "answer_must_contain": [
+        [
+          "settings"
+        ],
+        [
+          "bedrock"
+        ]
+      ]
+    },
+    {
+      "id": "q11",
+      "question": "Why must an S3 bucket be emptied before it can be deleted?",
+      "gold_marker": "cannot be deleted while it holds anything",
+      "gold_source": "p4-document-pipeline/TEARDOWN.md",
+      "answer_must_contain": [
+        [
+          "empt"
+        ]
+      ]
+    },
+    {
+      "id": "q12",
+      "question": "What is the contested answer key in the model bench, and why was it kept?",
+      "gold_marker": "A contested answer key was kept rather than quietly fixed",
+      "gold_source": "p1-model-bench/README.md",
+      "answer_must_contain": [
+        [
+          "neutral",
+          "negative",
+          "sentiment",
+          "c4"
+        ],
+        [
+          "kept",
+          "flagged",
+          "contested",
+          "arguable",
+          "disputed"
+        ]
+      ]
+    },
+    {
+      "id": "q13",
+      "question": "Which approach was both cheaper and more accurate in the document pipeline?",
+      "gold_marker": "4.5\u00d7 cheaper and more accurate",
+      "gold_source": "p4-document-pipeline/README.md",
+      "answer_must_contain": [
+        [
+          "ocr",
+          "nova-lite",
+          "model",
+          "cheap route",
+          "foundation model"
+        ],
+        [
+          "cheaper",
+          "3.82",
+          "4.5",
+          "less expensive"
+        ]
+      ]
+    },
+    {
+      "id": "q14",
+      "question": "What does Amazon S3 Vectors cost to store vectors?",
+      "gold_marker": "$0.06 per GB-month",
+      "gold_source": "README.md",
+      "answer_must_contain": [
+        [
+          "0.06"
+        ],
+        [
+          "gb"
+        ]
+      ]
+    },
+    {
+      "id": "q15",
+      "question": "Why does the document pipeline count wrong answers separately from missing ones?",
+      "gold_marker": "worse score and a better failure",
+      "gold_source": "p4-document-pipeline/README.md",
+      "answer_must_contain": [
+        [
+          "missing",
+          "human",
+          "review",
+          "absent"
+        ],
+        [
+          "wrong",
+          "silent",
+          "invention",
+          "confident"
+        ]
+      ]
+    }
+  ]
+}

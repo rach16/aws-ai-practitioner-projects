@@ -1,0 +1,1057 @@
+{
+  "index": "heading-1200@512",
+  "top_k": 3,
+  "system_grounded": "Answer only from the sources provided. Cite the source number you used, like [1]. If the sources do not contain the answer, say you do not know. Be brief.",
+  "system_ungrounded": "Answer the question. If you do not know, say you do not know. Be brief.",
+  "models": {
+    "nova-lite": {
+      "rows": [
+        {
+          "id": "q1",
+          "question": "Why was fine-tuning not built in these projects?",
+          "retrieved_gold": true,
+          "gold_ranks": [
+            1
+          ],
+          "grounded": {
+            "correct": true,
+            "cited": [
+              1,
+              3
+            ],
+            "cited_wrong_source": false,
+            "refused": false,
+            "output_tokens": 65,
+            "input_tokens": 526,
+            "text": "Fine-tuning was not built in these projects because serving a fine-tuned model on Bedrock requires Provisioned Throughput, which costs hundreds of dollars a month. Instead, RAG (Retrieval-Augmented Generation) was chosen for its cost-effectiveness for the workload. [1][3]"
+          },
+          "ungrounded": {
+            "correct": false,
+            "refused": true,
+            "output_tokens": 6,
+            "input_tokens": 30,
+            "text": "I do not know."
+          },
+          "bare": {
+            "correct": false,
+            "refused": false,
+            "output_tokens": 400,
+            "input_tokens": 15,
+            "text": "Fine-tuning is a technique in machine learning where a pre-trained model is further trained (or \"fine-tuned\") on a new, often smaller, dataset specific to a particular task. This approach leverages the knowledge the model has already acquired and adapts it to the new task, often resulting in better performance compared to training a model from scratch.\n\nThere could be several reasons why fine-tuning was not built into certain projects:\n\n1. **Resource Constraints**: Fine-tuning requires significant computational resources, including powerful GPUs or TPUs and substantial memory. Projects with limited budgets or resources might not have been able to afford the additional costs associated with fine-tuning.\n\n2. **Time Constraints**: Fine-tuning can be a time-consuming process, especially for large models. Projects with tight deadlines might have opted for simpler, faster methods to achieve quicker results.\n\n3. **Lack of Data**: Fine-tuning typically requires a substantial amount of task-specific data. If the project did not have access to such data, fine-tuning would not be feasible.\n\n4. **Model Complexity**: Some models are so complex that fine-tuning them is challenging. The complexity can make it difficult to achieve meaningful improvements or require extensive expertise to implement effectively.\n\n5. **Generalization Concerns**: In some cases, the developers might have been concerned that fine-tuning on a specific dataset could lead to overfitting, where the model performs well on the fine-tuning data but poorly on new, unseen data.\n\n6. **Alternative Approaches**: There might have been alternative methods or models that were more suitable for the project's goals. For example, transfer learning without fine-tuning, or using simpler models that do not require fine-tuning.\n\n7. **Lack of Expertise**: Fine-tuning requires a certain level of expertise in machine learning and model training. If the team lacked this expertise, they might have chosen simpler methods that they were more comfortable with.\n\n8. **Project Scope**:"
+          }
+        },
+        {
+          "id": "q2",
+          "question": "Which model scored 20% when the correct result was 80%, and why?",
+          "retrieved_gold": true,
+          "gold_ranks": [
+            2
+          ],
+          "grounded": {
+            "correct": true,
+            "cited": [
+              1,
+              2
+            ],
+            "cited_wrong_source": false,
+            "refused": false,
+            "output_tokens": 109,
+            "input_tokens": 1140,
+            "text": "The model that scored 20% when the correct result was 80% is `gpt-oss-20b`. This happened because the model was given a 10-token ceiling for classification questions, which was not enough for the model to complete its reasoning process and provide a full answer. As a result, every short answer came back as an empty string and scored zero. With a per-model 512-token floor, it scores 80%. [1][2]"
+          },
+          "ungrounded": {
+            "correct": false,
+            "refused": true,
+            "output_tokens": 6,
+            "input_tokens": 38,
+            "text": "I do not know."
+          },
+          "bare": {
+            "correct": false,
+            "refused": false,
+            "output_tokens": 400,
+            "input_tokens": 23,
+            "text": "To determine which model scored 20% when the correct result was 80%, we need to understand the context in which the models were evaluated. Typically, this kind of problem involves a classification task where the models are evaluated based on their accuracy, precision, recall, or some other metric. However, since the problem specifically mentions a score of 20% when the correct result was 80%, it suggests that the model's performance was significantly lower than expected.\n\nLet's assume the models were evaluated based on their accuracy, which is the proportion of correct predictions out of the total number of predictions. If the correct result was 80%, it means that the model that should have scored 80% actually scored 20%. This implies that the model made correct predictions only 20% of the time, which is a very poor performance.\n\nThe reason for such a low score could be due to several factors:\n1. **Poor Model Training**: The model might not have been trained properly or might have been trained on insufficient or incorrect data.\n2. **Overfitting or Underfitting**: The model might have overfit the training data, meaning it performed well on the training data but poorly on the test data. Alternatively, it might have underfit the data, meaning it did not capture the underlying patterns in the data.\n3. **Incorrect Model Selection**: The model chosen might not be suitable for the task at hand.\n4. **Data Issues**: There might be issues with the data, such as noise, missing values, or class imbalance.\n\nWithout additional information, it is not possible to identify the specific model that scored 20%. However, the key point is that the model's performance was significantly lower than expected, and the reason for this could be one of the factors mentioned above.\n\nTherefore, the answer is:\n\n\\boxed{20\\%}\n\nThe reason for the low score is that the model performed poorly, likely due to poor"
+          }
+        },
+        {
+          "id": "q3",
+          "question": "What was wrong with the original latency measurement?",
+          "retrieved_gold": true,
+          "gold_ranks": [
+            2
+          ],
+          "grounded": {
+            "correct": true,
+            "cited": [
+              1,
+              2
+            ],
+            "cited_wrong_source": false,
+            "refused": false,
+            "output_tokens": 39,
+            "input_tokens": 691,
+            "text": "The original latency measurement did not account for credential resolution and the TLS handshake on a cold client, attributing the missing 2.3 seconds to the model [1][2]."
+          },
+          "ungrounded": {
+            "correct": false,
+            "refused": true,
+            "output_tokens": 6,
+            "input_tokens": 28,
+            "text": "I do not know."
+          },
+          "bare": {
+            "correct": false,
+            "refused": false,
+            "output_tokens": 400,
+            "input_tokens": 13,
+            "text": "The original latency measurement had several potential issues that could have led to inaccurate or misleading results. Here are some common problems that might have occurred:\n\n1. **Inaccurate Timing Mechanisms**:\n   - The timing mechanism used to measure latency might not have been precise enough. For example, using a system clock that has a resolution too low to capture the fine-grained timing differences required for latency measurement.\n\n2. **Single Measurement**:\n   - Taking a single measurement can be misleading due to transient conditions such as network congestion, CPU load variations, or other system activities that might not be representative of typical performance.\n\n3. **Lack of Statistical Analysis**:\n   - Not performing a sufficient number of measurements to account for variability. A single measurement might be an outlier, and without multiple samples, the results might not be reliable.\n\n4. **Environmental Factors**:\n   - External factors such as network conditions, system load, and other processes running on the system were not controlled or accounted for, which could skew the results.\n\n5. **Measurement Overhead**:\n   - The act of measuring latency itself might have introduced additional latency or altered the conditions being measured (observer effect). For example, the process of capturing and recording the timing data might have impacted the system performance.\n\n6. **Inconsistent Measurement Conditions**:\n   - The conditions under which the measurements were taken were not consistent. This could include differences in network conditions, system load, or other environmental factors that affect latency.\n\n7. **Incorrect Scope of Measurement**:\n   - The scope of what was being measured was not clearly defined. For example, measuring only the network latency without considering the processing time on the sender or receiver side could give an incomplete picture.\n\n8. **Failure to Account for Jitter**:\n   - Jitter, or the variation in latency over time, was not measured or accounted for. This could lead to an underestimation of the true variability in latency.\n\n9. **Hardware and Software Configuration**:\n   - The"
+          }
+        },
+        {
+          "id": "q4",
+          "question": "What did Comprehend fail to detect in the invoice?",
+          "retrieved_gold": true,
+          "gold_ranks": [
+            2
+          ],
+          "grounded": {
+            "correct": true,
+            "cited": [
+              1,
+              2
+            ],
+            "cited_wrong_source": false,
+            "refused": false,
+            "output_tokens": 52,
+            "input_tokens": 984,
+            "text": "Comprehend failed to detect a phone number in the invoice [1][2]. \n\nSources:\n1. p4-document-pipeline/DECISIONS.md\n2. p4-document-pipeline/README.md"
+          },
+          "ungrounded": {
+            "correct": false,
+            "refused": true,
+            "output_tokens": 6,
+            "input_tokens": 31,
+            "text": "I do not know."
+          },
+          "bare": {
+            "correct": false,
+            "refused": false,
+            "output_tokens": 400,
+            "input_tokens": 16,
+            "text": "To provide a detailed answer, it's important to understand the context in which \"Comprehend\" is being used. \"Comprehend\" typically refers to Amazon Comprehend, a natural language processing (NLP) service that uses machine learning to find insights and relationships in text.\n\nIn the context of invoice processing, Amazon Comprehend can be used to extract structured data from unstructured text, such as names, dates, amounts, and other key-value pairs. However, there are several areas where Comprehend might fail to detect information accurately:\n\n1. **Handwritten Text**: If the invoice contains handwritten notes or annotations, Comprehend may struggle to accurately recognize and interpret the text.\n\n2. **Poor Image Quality**: If the scanned image of the invoice is of low quality, with blurriness, poor contrast, or other issues, Comprehend might fail to detect certain text elements accurately.\n\n3. **Complex Layouts**: Invoices with complex layouts, such as tables with merged cells, footnotes, or non-standard formats, can confuse Comprehend, leading to incorrect detection of information.\n\n4. **Ambiguous Terms**: Terms that have multiple meanings or are context-dependent might be misinterpreted. For example, \"Net\" could be interpreted as a net amount or a network-related term, depending on the context.\n\n5. **Custom Fields**: Invoices with custom fields or non-standard terminology that are not commonly recognized by Comprehend's training data might not be detected accurately.\n\n6. **Currency and Units**: If the invoice uses non-standard currency symbols or units of measurement, Comprehend might fail to detect or correctly interpret these values.\n\n7. **Language and Localization**: If the invoice is in a language other than English or contains local dialects, slang, or jargon, Comprehend's performance might be suboptimal unless it has been specifically trained for that language or dialect.\n\n8. **OCR Errors**: If the Optical Character Recognition"
+          }
+        },
+        {
+          "id": "q5",
+          "question": "Why are the documents in the document pipeline synthetic rather than real?",
+          "retrieved_gold": true,
+          "gold_ranks": [
+            2
+          ],
+          "grounded": {
+            "correct": true,
+            "cited": [
+              1,
+              2
+            ],
+            "cited_wrong_source": false,
+            "refused": false,
+            "output_tokens": 73,
+            "input_tokens": 577,
+            "text": "The documents in the document pipeline are synthetic rather than real because the repository is public, and anything committed stays public after deletion. Additionally, writing the facts first means every extraction can be scored, and it is what makes `verify.py` possible at all: the exact strings that must not survive redaction are already known. [1][2]"
+          },
+          "ungrounded": {
+            "correct": false,
+            "refused": true,
+            "output_tokens": 6,
+            "input_tokens": 32,
+            "text": "I do not know."
+          },
+          "bare": {
+            "correct": false,
+            "refused": false,
+            "output_tokens": 400,
+            "input_tokens": 17,
+            "text": "The documents in a document pipeline being synthetic rather than real can be attributed to several reasons:\n\n1. **Testing and Development**: Synthetic documents are often used during the development and testing phases of software applications. They allow developers to simulate various scenarios and edge cases without needing actual sensitive or real-world data.\n\n2. **Privacy and Security**: Using synthetic data helps protect sensitive information. Real documents might contain personal, financial, or confidential information that could be misused if exposed.\n\n3. **Consistency and Control**: Synthetic documents can be generated to have specific characteristics, making it easier to ensure consistency across different tests and scenarios. This controlled environment helps in identifying and fixing issues more effectively.\n\n4. **Volume and Scalability**: Generating synthetic documents can be easier and more cost-effective when dealing with large volumes of data. It allows for scalability in testing environments without the need for extensive data collection and management.\n\n5. **Regulatory Compliance**: Certain industries are subject to strict regulations regarding data privacy and protection. Synthetic data can help organizations comply with these regulations by avoiding the use of real data in testing and development.\n\n6. **Anonymization**: Synthetic documents can be designed to mimic the structure and content of real documents while removing or altering identifying information, thus providing a balance between utility and privacy.\n\n7. **Cost Efficiency**: Creating synthetic documents can be more cost-effective than obtaining and managing real documents, especially when dealing with large datasets.\n\n8. **Flexibility**: Synthetic documents can be easily modified to simulate different conditions, formats, and data types, providing flexibility in testing various aspects of a document processing pipeline.\n\n9. **Reproducibility**: Using synthetic documents ensures that tests and experiments can be reproduced consistently, which is crucial for debugging and validating the performance of document processing systems.\n\n10. **Educational and Training Purposes**: Synthetic documents are often used in training and educational settings to teach and demonstrate concepts without the risk of using real, potentially sensitive data.\n\nIn summary, synthetic documents in a document pipeline"
+          }
+        },
+        {
+          "id": "q6",
+          "question": "What does Textract charge per page for FORMS, TABLES and QUERIES together?",
+          "retrieved_gold": true,
+          "gold_ranks": [
+            3
+          ],
+          "grounded": {
+            "correct": true,
+            "cited": [
+              1
+            ],
+            "cited_wrong_source": true,
+            "refused": false,
+            "output_tokens": 12,
+            "input_tokens": 788,
+            "text": "$0.07 per page [1]"
+          },
+          "ungrounded": {
+            "correct": false,
+            "refused": true,
+            "output_tokens": 6,
+            "input_tokens": 37,
+            "text": "I do not know."
+          },
+          "bare": {
+            "correct": false,
+            "refused": false,
+            "output_tokens": 308,
+            "input_tokens": 22,
+            "text": "Amazon Textract is a service that automatically extracts text, handwriting, and data from scanned documents. The pricing for Textract is based on the number of pages processed, and it varies depending on whether you are extracting text, forms, tables, or queries.\n\nAs of the latest update in 2023, the pricing for Textract is as follows:\n\n- **Text Extraction**: $0.004 per page\n- **Forms Extraction**: $0.005 per page\n- **Tables Extraction**: $0.005 per page\n- **Queries**: $0.005 per page\n\nIf you are using Textract to extract text, forms, tables, and queries together, you will be charged for each of these features separately. Therefore, the total cost per page would be:\n\n- **Text Extraction**: $0.004\n- **Forms Extraction**: $0.005\n- **Tables Extraction**: $0.005\n- **Queries**: $0.005\n\nAdding these up, the total cost per page for extracting text, forms, tables, and queries together would be:\n\n\\[ \\$0.004 + \\$0.005 + \\$0.005 + \\$0.005 = \\$0.019 \\]\n\nSo, the cost per page for extracting text, forms, tables, and queries together is \\(\\boxed{0.019}\\) dollars."
+          }
+        },
+        {
+          "id": "q7",
+          "question": "What is the confidence threshold for redacting PII, and what happens below it?",
+          "retrieved_gold": true,
+          "gold_ranks": [
+            1
+          ],
+          "grounded": {
+            "correct": true,
+            "cited": [
+              1
+            ],
+            "cited_wrong_source": false,
+            "refused": false,
+            "output_tokens": 43,
+            "input_tokens": 874,
+            "text": "The confidence threshold for redacting PII is 0.80. Below this threshold, a finding is reported for review instead of being redacted, because redaction is considered destructive [1]."
+          },
+          "ungrounded": {
+            "correct": false,
+            "refused": true,
+            "output_tokens": 6,
+            "input_tokens": 36,
+            "text": "I do not know."
+          },
+          "bare": {
+            "correct": true,
+            "refused": false,
+            "output_tokens": 400,
+            "input_tokens": 21,
+            "text": "The confidence threshold for redacting Personally Identifiable Information (PII) is a measure used to determine the certainty with which a piece of information can be identified as PII. This threshold is typically set by organizations or regulatory bodies to ensure that sensitive information is appropriately protected.\n\n### Confidence Threshold\n\nThe confidence threshold is a percentage value (often expressed as a decimal between 0 and 1) that represents the minimum level of certainty required to classify and redact PII. For example, a confidence threshold of 0.80 means that only information identified with at least 80% confidence will be redacted.\n\n### Below the Confidence Threshold\n\nIf the confidence level of identified PII falls below the set threshold, the following generally happens:\n\n1. **Non-Redaction**: The information is not redacted. This means it remains visible and accessible in its original form.\n   \n2. **Further Review**: Some systems may flag the information for further human review. A human might assess whether the information should indeed be redacted despite the low confidence score.\n\n3. **Logging and Monitoring**: The system may log the instance for monitoring purposes. This helps in understanding the types of PII that are frequently missed or misclassified, allowing for adjustments in the redaction algorithms or thresholds.\n\n4. **Alerts**: Some systems might generate alerts to notify data privacy officers or compliance teams that a potential PII element was not redacted due to low confidence.\n\n### Importance of Setting the Right Threshold\n\n- **Balancing Act**: Setting the threshold too high might result in legitimate PII being left unredacted, risking data breaches. Conversely, setting it too low might result in excessive redaction, potentially obscuring valuable information.\n  \n- **Compliance**: Regulatory frameworks like GDPR, HIPAA, etc., often provide guidelines or recommendations on how sensitive data should be handled. The confidence threshold should align with these regulations.\n\n- **Contextual Sensitivity**: Different types of PII might require different thresholds. For example,"
+          }
+        },
+        {
+          "id": "q8",
+          "question": "Why was the Converse API chosen instead of InvokeModel?",
+          "retrieved_gold": true,
+          "gold_ranks": [
+            1
+          ],
+          "grounded": {
+            "correct": true,
+            "cited": [
+              1
+            ],
+            "cited_wrong_source": false,
+            "refused": false,
+            "output_tokens": 50,
+            "input_tokens": 401,
+            "text": "The Converse API was chosen instead of InvokeModel because it takes one shape for every model and returns token counts in a consistent place, which simplifies the code by avoiding the need to translate between different JSON shapes for each provider [1]."
+          },
+          "ungrounded": {
+            "correct": false,
+            "refused": true,
+            "output_tokens": 6,
+            "input_tokens": 31,
+            "text": "I do not know."
+          },
+          "bare": {
+            "correct": false,
+            "refused": false,
+            "output_tokens": 400,
+            "input_tokens": 16,
+            "text": "The choice between using the Converse API and InvokeModel can depend on several factors, including the specific requirements of the project, the capabilities of each API, and the context in which they are being used. Here are some potential reasons why the Converse API might have been chosen over InvokeModel:\n\n1. **Specific Use Case Requirements**:\n   - **Converse API**: If the project requires a conversational interface, real-time interaction, or the ability to handle complex dialogues, the Converse API might be more suitable. It is often designed for applications that need to maintain context over multiple interactions.\n   - **InvokeModel**: If the project requires a simpler, one-off model invocation without the need for maintaining conversational context, InvokeModel might be more appropriate.\n\n2. **Ease of Use and Integration**:\n   - **Converse API**: It might offer a more user-friendly interface and easier integration into applications, especially if the project is focused on user interaction.\n   - **InvokeModel**: If the project requires more control over the model's parameters and the invocation process, InvokeModel might be chosen for its flexibility and direct access to model features.\n\n3. **Performance and Scalability**:\n   - **Converse API**: It might be optimized for performance in conversational contexts, handling multiple requests efficiently.\n   - **InvokeModel**: If the project needs to handle a high volume of requests with minimal latency, InvokeModel might be chosen for its potentially lower overhead.\n\n4. **Context Management**:\n   - **Converse API**: It might provide built-in mechanisms for managing conversation context, which is crucial for applications that need to remember previous interactions.\n   - **InvokeModel**: It might be more suitable for applications where each request is independent and does not require context from previous interactions.\n\n5. **Feature Set**:\n   - **Converse API**: It might include additional features such as natural language understanding, intent recognition, and entity extraction, which are essential for"
+          }
+        },
+        {
+          "id": "q9",
+          "question": "What did the temperature sweep reveal about determinism?",
+          "retrieved_gold": true,
+          "gold_ranks": [
+            2
+          ],
+          "grounded": {
+            "correct": true,
+            "cited": [
+              2
+            ],
+            "cited_wrong_source": false,
+            "refused": false,
+            "output_tokens": 15,
+            "input_tokens": 1010,
+            "text": "Temperature 0 is not deterministic on every model. [2]"
+          },
+          "ungrounded": {
+            "correct": false,
+            "refused": true,
+            "output_tokens": 6,
+            "input_tokens": 30,
+            "text": "I do not know."
+          },
+          "bare": {
+            "correct": false,
+            "refused": false,
+            "output_tokens": 400,
+            "input_tokens": 15,
+            "text": "The concept of determinism in the context of a temperature sweep typically refers to how temperature affects the behavior of a system, often in the realm of physics, chemistry, or materials science. A temperature sweep involves systematically changing the temperature of a system and observing how its properties or behaviors change in response. Here\u2019s what such a study might reveal about determinism:\n\n1. **Predictability of Behavior**: A temperature sweep can reveal how predictable the behavior of a system is under varying temperatures. If the system's responses to temperature changes are consistent and follow known physical laws, this supports a deterministic view, where the system's future states can be predicted based on its current state and external conditions.\n\n2. **Phase Transitions**: Many materials exhibit phase transitions at specific temperatures (e.g., melting, freezing, boiling). A temperature sweep can reveal critical points where the system changes phase, often in a deterministic manner. The predictability of these phase transitions supports the deterministic nature of the system.\n\n3. **Rate Processes**: In chemical reactions or physical processes, the rate at which reactions occur often depends on temperature. Arrhenius equations and other kinetic models describe these dependencies deterministically. A temperature sweep can validate these models by showing how reaction rates change predictably with temperature.\n\n4. **Thermal Hysteresis**: In some systems, a temperature sweep might reveal hysteresis, where the system's behavior depends on its history. This can complicate determinism, as the system's future state might depend not just on the current temperature but also on how the temperature has changed in the past.\n\n5. **Chaos and Sensitivity to Initial Conditions**: In some complex systems, a temperature sweep might reveal chaotic behavior, where small changes in initial conditions (including temperature) can lead to vastly different outcomes. This challenges determinism, as it suggests that long-term predictions become unreliable due to sensitivity to initial conditions.\n\n6. **Statistical Determinism**: In systems with many particles or"
+          }
+        },
+        {
+          "id": "q10",
+          "question": "How do you turn off Bedrock model invocation logging?",
+          "retrieved_gold": true,
+          "gold_ranks": [
+            1
+          ],
+          "grounded": {
+            "correct": true,
+            "cited": [
+              1
+            ],
+            "cited_wrong_source": false,
+            "refused": false,
+            "output_tokens": 49,
+            "input_tokens": 616,
+            "text": "To turn off Bedrock model invocation logging, go to the Bedrock console, navigate to **Settings** (bottom of the left sidebar), find *Model invocation logging*, toggle it off, and then save the changes [1]."
+          },
+          "ungrounded": {
+            "correct": false,
+            "refused": true,
+            "output_tokens": 6,
+            "input_tokens": 30,
+            "text": "I do not know."
+          },
+          "bare": {
+            "correct": true,
+            "refused": false,
+            "output_tokens": 400,
+            "input_tokens": 15,
+            "text": "To turn off Bedrock model invocation logging, you need to adjust the logging settings in your AWS environment. Here's a general guide on how to do this:\n\n### Using AWS Management Console\n\n1. **Sign in to the AWS Management Console**:\n   Open your web browser and navigate to the AWS Management Console. Log in with your credentials.\n\n2. **Navigate to CloudWatch**:\n   From the AWS Management Console, search for and select **CloudWatch**. This is the service where AWS logs are stored and managed.\n\n3. **Access Logs**:\n   In the CloudWatch dashboard, click on **Logs** in the left-hand menu. This will take you to the CloudWatch Logs page.\n\n4. **Find the Relevant Log Group**:\n   Look for the log group associated with Bedrock model invocations. This might be named something like `/aws/bedrock/model-invocations` or similar. Click on the log group.\n\n5. **Modify Retention Settings**:\n   Within the log group, you can adjust the retention settings. You can set the retention to \"Delete\" to ensure that logs are automatically deleted after a certain period, effectively turning off logging.\n\n6. **Adjust Log Insights (Optional)**:\n   If you have set up any CloudWatch Logs Insights queries, you can modify or delete these queries to stop any active logging activities.\n\n### Using AWS CLI\n\nIf you prefer using the command line, you can use the AWS CLI to manage your logging settings.\n\n1. **Install and Configure AWS CLI**:\n   Ensure that you have the AWS CLI installed and configured with the necessary permissions.\n\n2. **Delete Log Group**:\n   To turn off logging, you can delete the log group associated with Bedrock model invocations. Use the following command:\n\n   ```sh\n   aws logs delete-log-group --log-group-name /aws/bedrock/model-invocations\n   ```\n\n"
+          }
+        },
+        {
+          "id": "q11",
+          "question": "Why must an S3 bucket be emptied before it can be deleted?",
+          "retrieved_gold": true,
+          "gold_ranks": [
+            1
+          ],
+          "grounded": {
+            "correct": true,
+            "cited": [
+              1
+            ],
+            "cited_wrong_source": false,
+            "refused": false,
+            "output_tokens": 29,
+            "input_tokens": 806,
+            "text": "An S3 bucket must be emptied before it can be deleted because a bucket cannot be deleted while it holds any objects [1]."
+          },
+          "ungrounded": {
+            "correct": true,
+            "refused": false,
+            "output_tokens": 38,
+            "input_tokens": 33,
+            "text": "An S3 bucket must be emptied before it can be deleted because Amazon S3 does not allow deletion of a bucket that contains objects. You must delete all objects within the bucket first."
+          },
+          "bare": {
+            "correct": true,
+            "refused": false,
+            "output_tokens": 312,
+            "input_tokens": 18,
+            "text": "An Amazon S3 (Simple Storage Service) bucket must be emptied before it can be deleted due to the following reasons:\n\n1. **Versioning**: If an S3 bucket has versioning enabled, it can contain multiple versions of an object, including delete markers. To delete the bucket, all objects and their versions must be removed, which means emptying the bucket.\n\n2. **Object Locking**: If an object in the bucket has been locked with S3 Object Lock, it cannot be deleted until the lock expires or is removed. Emptying the bucket ensures that all objects, including those with locks, are deleted.\n\n3. **Cross-Region Replication**: If the bucket is part of a cross-region replication setup, all objects must be deleted from the destination bucket(s) before the source bucket can be deleted.\n\n4. **Policy Restrictions**: Some bucket policies or access control lists (ACLs) may prevent the deletion of a bucket if it contains objects. Ensuring the bucket is empty removes these restrictions.\n\n5. **Compliance and Governance**: Organizations may have policies that require all data to be deleted before a bucket is removed to ensure data retention and compliance with regulations.\n\n6. **API and SDK Requirements**: The AWS Management Console, AWS CLI, and SDKs require that a bucket be empty before it can be deleted. Attempting to delete a non-empty bucket will result in an error.\n\nTo summarize, emptying an S3 bucket before deletion ensures that all objects, versions, and associated configurations are removed, complying with AWS requirements and policies."
+          }
+        },
+        {
+          "id": "q12",
+          "question": "What is the contested answer key in the model bench, and why was it kept?",
+          "retrieved_gold": true,
+          "gold_ranks": [
+            2
+          ],
+          "grounded": {
+            "correct": true,
+            "cited": [
+              1,
+              2
+            ],
+            "cited_wrong_source": false,
+            "refused": true,
+            "output_tokens": 111,
+            "input_tokens": 717,
+            "text": "The contested answer key in the model bench was kept rather than fixed because the sentiment was genuinely mixed, and the available labels did not include a 'mixed' option. The key said `negative`, while Nova Micro and Nova Pro independently answered `neutral`. The decision was made to keep the key, flag it in the report with the reasoning, and count it against the models. This approach was taken to ensure that the benchmark reflects the true nature of the results and to avoid hiding instances where the measurement might be incorrect. [1][2]"
+          },
+          "ungrounded": {
+            "correct": false,
+            "refused": true,
+            "output_tokens": 6,
+            "input_tokens": 36,
+            "text": "I do not know."
+          },
+          "bare": {
+            "correct": false,
+            "refused": false,
+            "output_tokens": 400,
+            "input_tokens": 21,
+            "text": "The \"contested answer key\" in the context of the Model Bench refers to a situation where the official answer key provided by the examination authority is challenged by students or educational institutions. This typically happens when there are discrepancies or perceived errors in the answers provided by the authority. Here are some key points regarding the contested answer key and why it might be kept:\n\n### Reasons for Contesting an Answer Key:\n1. **Perceived Errors**: Students or educators may identify mistakes in the official answer key, such as incorrect answers, ambiguous questions, or discrepancies in the marking scheme.\n2. **Fairness and Accuracy**: Contesting the answer key is often done to ensure that all students are evaluated fairly and accurately.\n3. **Transparency**: It helps in maintaining transparency in the evaluation process and ensures that the examination process is free from errors.\n\n### Why the Contested Answer Key is Kept:\n1. **Review and Verification**: The contested answer key is kept for review and verification by the examination authority. This allows them to examine the claims made by students or institutions.\n2. **Decision Making**: Keeping the contested answer key helps the authority in making an informed decision. They can analyze the objections and determine whether the contested answers are valid.\n3. **Appeal Process**: In many cases, the contested answer key is part of the appeal process. It provides a basis for students to present their case and for the authority to respond to those claims.\n4. **Record Keeping**: Maintaining the contested answer key is also a matter of record-keeping. It ensures that there is a documented trail of the objections and the authority's response.\n5. **Future Reference**: It can serve as a reference for future examinations to avoid similar issues and to improve the accuracy of the answer keys.\n\n### Process of Handling a Contested Answer Key:\n1. **Submission of Objections**: Students or institutions submit their objections along with supporting evidence.\n2. **Review by Experts**: The examination authority, often with the help of subject"
+          }
+        },
+        {
+          "id": "q13",
+          "question": "Which approach was both cheaper and more accurate in the document pipeline?",
+          "retrieved_gold": true,
+          "gold_ranks": [
+            3
+          ],
+          "grounded": {
+            "correct": true,
+            "cited": [
+              3
+            ],
+            "cited_wrong_source": false,
+            "refused": false,
+            "output_tokens": 31,
+            "input_tokens": 704,
+            "text": "The approach that was both cheaper and more accurate was Textract OCR \u2192 `claude-haiku-4.5` [3]."
+          },
+          "ungrounded": {
+            "correct": false,
+            "refused": true,
+            "output_tokens": 6,
+            "input_tokens": 32,
+            "text": "I do not know."
+          },
+          "bare": {
+            "correct": true,
+            "refused": false,
+            "output_tokens": 400,
+            "input_tokens": 17,
+            "text": "To determine which approach was both cheaper and more accurate in a document pipeline, we need to consider several factors, including the specific context of the document processing tasks, the technologies or methods used, and the metrics for accuracy and cost. Here are some common approaches in document processing pipelines and how they might compare:\n\n1. **Optical Character Recognition (OCR) Technologies**:\n   - **Traditional OCR**: This approach uses rule-based methods to convert scanned documents into editable text. It can be less accurate for complex layouts or poor-quality scans but is often cheaper in terms of initial setup.\n   - **Machine Learning-based OCR**: Modern OCR solutions leverage deep learning and neural networks to achieve higher accuracy, especially for varied fonts and document types. While the initial setup might be more expensive due to the need for training data and computational resources, the long-term accuracy improvements can offset the costs.\n\n2. **Document Classification and Structuring**:\n   - **Rule-based Systems**: These systems use predefined rules to classify and structure documents. They can be cheaper to implement initially but may lack the flexibility and accuracy needed for complex document types.\n   - **Machine Learning Models**: These models can learn from examples to classify and structure documents more accurately. The initial development and training can be costly, but they often provide better accuracy and can adapt to new document types with minimal additional cost.\n\n3. **Information Extraction**:\n   - **Template-based Extraction**: This approach relies on predefined templates to extract information from documents. It can be cheaper but may not handle variations well, leading to lower accuracy.\n   - **Machine Learning-based Extraction**: These systems can learn from examples to extract information more accurately, even from unstructured or semi-structured documents. The initial investment in training and development can be higher, but the accuracy gains can lead to long-term cost savings by reducing manual review and correction.\n\n4. **Natural Language Processing (NLP)**:\n   - **Rule-based NLP"
+          }
+        },
+        {
+          "id": "q14",
+          "question": "What does Amazon S3 Vectors cost to store vectors?",
+          "retrieved_gold": true,
+          "gold_ranks": [
+            2
+          ],
+          "grounded": {
+            "correct": true,
+            "cited": [
+              2
+            ],
+            "cited_wrong_source": false,
+            "refused": false,
+            "output_tokens": 22,
+            "input_tokens": 700,
+            "text": "$0.06 per GB-month with no minimum and no provisioned capacity [2]"
+          },
+          "ungrounded": {
+            "correct": false,
+            "refused": true,
+            "output_tokens": 6,
+            "input_tokens": 31,
+            "text": "I do not know."
+          },
+          "bare": {
+            "correct": false,
+            "refused": false,
+            "output_tokens": 400,
+            "input_tokens": 16,
+            "text": "Amazon S3 (Simple Storage Service) itself does not have a specific pricing model for storing vectors. Instead, the cost of storing vectors in Amazon S3 is determined by the standard S3 pricing model, which is based on the amount of data stored, the number of requests made, and the data transfer costs.\n\nHere's a breakdown of the relevant costs:\n\n1. **Storage Costs**:\n   - Amazon S3 charges for the amount of data stored in your buckets. As of the latest update, the cost is approximately $0.023 per GB per month for the S3 Standard storage class. There are other storage classes available, such as S3 Intelligent-Tiering, S3 Glacier, and S3 Glacier Deep Archive, which have different costs and are suited for different use cases.\n\n2. **Request Costs**:\n   - S3 charges for the number of requests (e.g., GET, PUT, DELETE) you make. For S3 Standard, the first 1,000 PUT, COPY, POST, or LIST requests are free each month. Beyond that, each additional request costs $0.0004 per request.\n\n3. **Data Transfer Costs**:\n   - Data transfer costs depend on the amount of data transferred in and out of S3. For S3 Standard, the first 1 GB of data transferred out each month is free. After that, it costs $0.09 per GB for data transferred out.\n\n4. **Additional Costs**:\n   - If you use features like S3 Lifecycle policies, S3 Transfer Acceleration, or S3 Cross-Region Replication, there may be additional costs associated with these services.\n\n### Example Calculation\n\nLet's say you store 1 TB (1,000 GB) of vector data in S3 Standard:\n\n- **Storage Cost**: 1,000 GB * $0.023/GB"
+          }
+        },
+        {
+          "id": "q15",
+          "question": "Why does the document pipeline count wrong answers separately from missing ones?",
+          "retrieved_gold": true,
+          "gold_ranks": [
+            1,
+            2
+          ],
+          "grounded": {
+            "correct": true,
+            "cited": [
+              1
+            ],
+            "cited_wrong_source": false,
+            "refused": false,
+            "output_tokens": 38,
+            "input_tokens": 853,
+            "text": "The document pipeline counts wrong answers separately from missing ones because a single accuracy figure would hide the difference between the two failure modes, and the difference is the entire argument [1]."
+          },
+          "ungrounded": {
+            "correct": false,
+            "refused": true,
+            "output_tokens": 6,
+            "input_tokens": 32,
+            "text": "I do not know."
+          },
+          "bare": {
+            "correct": true,
+            "refused": true,
+            "output_tokens": 356,
+            "input_tokens": 17,
+            "text": "The document pipeline counts wrong answers separately from missing ones for several reasons:\n\n1. **Differentiating Types of Errors**:\n   - **Wrong Answers**: These indicate that the model has generated a response but it is incorrect. This can help identify areas where the model's understanding or training may need improvement.\n   - **Missing Answers**: These occur when the model fails to provide any response at all. This can indicate issues with the model's ability to recognize the question or its limitations in generating answers.\n\n2. **Performance Metrics**:\n   - **Accuracy**: By separating wrong answers from missing ones, it is easier to calculate specific performance metrics such as accuracy, precision, and recall.\n   - **Error Analysis**: Differentiating between types of errors allows for more detailed error analysis, which can guide targeted improvements in the model.\n\n3. **User Experience**:\n   - A wrong answer can still provide some information, albeit incorrect, which might be useful in certain contexts.\n   - A missing answer leaves the user with no information, which can be more detrimental depending on the application.\n\n4. **Model Training and Evaluation**:\n   - **Feedback Loop**: Identifying whether the model is failing to answer or providing incorrect answers can help in refining the training process.\n   - **Prioritization**: If resources are limited, addressing the type of error that occurs more frequently or is more impactful can be prioritized.\n\n5. **Transparency and Accountability**:\n   - Clear reporting of different types of errors can provide transparency to users and stakeholders about the model's performance and limitations.\n\nBy keeping these counts separate, developers and users can better understand the model's behavior, identify specific areas for improvement, and make more informed decisions about how to enhance the model's performance."
+          }
+        }
+      ],
+      "totals": {
+        "retrieved_gold": 15,
+        "grounded_correct": 15,
+        "grounded_cited": 15,
+        "cited_wrong_source": 1,
+        "grounded_refused": 1,
+        "ungrounded_correct": 1,
+        "ungrounded_refused": 14,
+        "bare_correct": 5,
+        "bare_refused": 1,
+        "bare_output_tokens": 5776,
+        "grounded_invented": 0,
+        "ungrounded_invented": 0,
+        "bare_invented": 10,
+        "grounded_output_tokens": 738,
+        "ungrounded_output_tokens": 122,
+        "n": 15
+      }
+    },
+    "claude-haiku-4.5": {
+      "rows": [
+        {
+          "id": "q1",
+          "question": "Why was fine-tuning not built in these projects?",
+          "retrieved_gold": true,
+          "gold_ranks": [
+            1
+          ],
+          "grounded": {
+            "correct": true,
+            "cited": [
+              1
+            ],
+            "cited_wrong_source": false,
+            "refused": false,
+            "output_tokens": 114,
+            "input_tokens": 551,
+            "text": "According to the sources, fine-tuning was not built into these projects because **serving a fine-tuned model on Bedrock requires Provisioned Throughput, which costs hundreds of dollars a month** [1]. \n\nRather than omit the topic entirely, Project 2 (RAG from scratch) addresses this decision by working through the fine-tuning versus RAG choice with real cost figures in its `DECISIONS.md` file, explaining why RAG is the better choice for that workload [1]."
+          },
+          "ungrounded": {
+            "correct": false,
+            "refused": true,
+            "output_tokens": 110,
+            "input_tokens": 38,
+            "text": "I don't have enough context to answer your question. You're referring to \"these projects,\" but I don't know which projects you mean or what you're asking fine-tuning should have been built into.\n\nCould you provide more details about:\n- Which specific projects you're referring to?\n- What type of fine-tuning you mean (machine learning model fine-tuning, performance tuning, etc.)?\n- What the context is?\n\nWith that information, I'd be happy to help."
+          },
+          "bare": {
+            "correct": false,
+            "refused": true,
+            "output_tokens": 133,
+            "input_tokens": 23,
+            "text": "I don't have enough context to answer your question accurately. You're asking about \"these projects,\" but I don't know which projects you're referring to.\n\nCould you provide more details, such as:\n\n- **Which specific projects** are you asking about?\n- **What do you mean by \"fine-tuning\"?** (e.g., model fine-tuning, performance tuning, UI refinement)\n- **Where did you encounter this question?** (a document, discussion, code review, etc.)\n\nWith more context, I'd be happy to help explain the design decisions behind those projects."
+          }
+        },
+        {
+          "id": "q2",
+          "question": "Which model scored 20% when the correct result was 80%, and why?",
+          "retrieved_gold": true,
+          "gold_ranks": [
+            2
+          ],
+          "grounded": {
+            "correct": true,
+            "cited": [
+              1,
+              2
+            ],
+            "cited_wrong_source": false,
+            "refused": false,
+            "output_tokens": 156,
+            "input_tokens": 1155,
+            "text": "The model **`gpt-oss-20b`** scored 20% when the correct result was 80% [1][2].\n\n**Why:** `gpt-oss-20b` is a reasoning model that emits an internal reasoning block before answering. The benchmark suite gave classification questions a 10-token ceiling, which was sufficient for a simple answer like \"negative\" but nowhere near enough for reasoning tokens plus the answer. As a result, every short answer came back as an empty string and scored zero [1][2].\n\nWhen a per-model 512-token floor was applied instead, the model scored 80%, revealing that the harness was wrong by sixty percentage points [1][2]."
+          },
+          "ungrounded": {
+            "correct": false,
+            "refused": true,
+            "output_tokens": 67,
+            "input_tokens": 43,
+            "text": "I don't have enough context to answer this question. You haven't provided information about:\n\n- Which models you're referring to\n- What task or test was being evaluated\n- What the scoring system measures\n- Any data or results to reference\n\nCould you provide more details about the scenario you're asking about?"
+          },
+          "bare": {
+            "correct": false,
+            "refused": true,
+            "output_tokens": 93,
+            "input_tokens": 28,
+            "text": "I don't have any context about which models, scores, or results you're referring to. Could you please provide more information, such as:\n\n- What test or evaluation are you asking about?\n- Which models were being compared?\n- What was being measured?\n- Where did you see this 20% vs 80% comparison?\n\nWith those details, I'd be happy to help explain why a model scored that way."
+          }
+        },
+        {
+          "id": "q3",
+          "question": "What was wrong with the original latency measurement?",
+          "retrieved_gold": true,
+          "gold_ranks": [
+            2
+          ],
+          "grounded": {
+            "correct": true,
+            "cited": [
+              1,
+              2
+            ],
+            "cited_wrong_source": false,
+            "refused": false,
+            "output_tokens": 210,
+            "input_tokens": 730,
+            "text": "# What Was Wrong with the Original Latency Measurement\n\nThe original latency measurement was **including client-side overhead that wasn't part of the model's actual processing time** [1][2].\n\nSpecifically, the first version timed the round trip on the client machine and reported it as latency. However, when model invocation logging was enabled, it revealed a massive discrepancy: the server reported `latencyMs: 231` while the client measured `2570 ms` [1][2].\n\nThe missing 2.3 seconds was caused by **credential resolution and the TLS handshake on a cold client** [1][2]. This overhead was being incorrectly attributed to the model's performance, creating an error of an order of magnitude [1].\n\nThe solution was to record both measurements: server-reported latency (what the model is actually responsible for) and client-measured round trip time (what callers actually wait for) [1]."
+          },
+          "ungrounded": {
+            "correct": false,
+            "refused": true,
+            "output_tokens": 65,
+            "input_tokens": 36,
+            "text": "I don't have context about which latency measurement you're referring to. Could you provide more details about:\n\n- What system or application you're asking about?\n- What the original measurement was?\n- What problem was discovered?\n\nWith that information, I can give you a more helpful answer."
+          },
+          "bare": {
+            "correct": false,
+            "refused": true,
+            "output_tokens": 98,
+            "input_tokens": 21,
+            "text": "I don't have context about which latency measurement you're referring to. Could you provide more details, such as:\n\n- **What system or application** was being measured?\n- **What was the original measurement** and what was found to be wrong with it?\n- **Where did you encounter this** (article, documentation, discussion, etc.)?\n\nWith more information, I'd be happy to help explain what went wrong with the latency measurement."
+          }
+        },
+        {
+          "id": "q4",
+          "question": "What did Comprehend fail to detect in the invoice?",
+          "retrieved_gold": true,
+          "gold_ranks": [
+            2
+          ],
+          "grounded": {
+            "correct": true,
+            "cited": [
+              1,
+              2
+            ],
+            "cited_wrong_source": false,
+            "refused": false,
+            "output_tokens": 103,
+            "input_tokens": 981,
+            "text": "According to the sources, Comprehend failed to detect a **phone number in the invoice** [1][2].\n\nThe sources explain that while the phone number was detected with high confidence (0.978) when tested in isolation, Comprehend missed it when processing the full invoice document. The detection failure was caused by unrelated text in the invoice suppressing the detection\u2014as more of the invoice was added, the confidence score decreased below the 0.80 threshold [2]."
+          },
+          "ungrounded": {
+            "correct": false,
+            "refused": true,
+            "output_tokens": 83,
+            "input_tokens": 38,
+            "text": "I don't have any context about what invoice you're referring to or what Comprehend (AWS Comprehend or another tool) was supposed to detect. Could you provide more details about:\n\n1. Which invoice you're asking about?\n2. What specific detection task was being performed?\n3. What information was missed?\n\nWith that information, I can help answer your question."
+          },
+          "bare": {
+            "correct": false,
+            "refused": true,
+            "output_tokens": 101,
+            "input_tokens": 23,
+            "text": "I don't have any context about a specific invoice or what Comprehend (AWS Comprehend, presumably) failed to detect in it. To help you answer this question, I would need:\n\n1. Details about the invoice in question\n2. Information about what Comprehend was supposed to detect\n3. What the actual results were\n4. Any error messages or documentation you're referencing\n\nCould you provide more context or share the specific scenario you're asking about?"
+          }
+        },
+        {
+          "id": "q5",
+          "question": "Why are the documents in the document pipeline synthetic rather than real?",
+          "retrieved_gold": true,
+          "gold_ranks": [
+            2
+          ],
+          "grounded": {
+            "correct": true,
+            "cited": [
+              1,
+              2
+            ],
+            "cited_wrong_source": false,
+            "refused": false,
+            "output_tokens": 180,
+            "input_tokens": 613,
+            "text": "The documents in the document pipeline are synthetic rather than real for two main reasons [1]:\n\n1. **Privacy and security**: Since the repository is public, real documents containing personal data (names, addresses, national identifiers) would pose a risk of data leakage that persists even after deletion. Synthetic documents eliminate this risk entirely.\n\n2. **Measurable accuracy**: Because the facts are written down before the images are rendered, every extraction can be scored against a ground truth answer key (`docs/ground_truth.json`). This allows for objective comparison between different extraction tools rather than subjective eyeballing of results [1][2].\n\nA secondary benefit is that synthetic documents are clean and crisp, which makes OCR easy. This means any failures are due to understanding rather than reading difficulties, making it a more meaningful comparison [1]."
+          },
+          "ungrounded": {
+            "correct": false,
+            "refused": true,
+            "output_tokens": 118,
+            "input_tokens": 39,
+            "text": "I don't have enough context to answer this question. You're referring to \"the document pipeline\" and \"synthetic documents,\" but I don't know which specific system, project, or research work you're asking about.\n\nCould you provide more details, such as:\n- What document pipeline you're referring to?\n- What field or domain (NLP, machine learning, data processing, etc.)?\n- Any relevant paper, project, or system name?\n\nWith that information, I'd be better able to help explain the reasoning behind using synthetic documents."
+          },
+          "bare": {
+            "correct": false,
+            "refused": true,
+            "output_tokens": 234,
+            "input_tokens": 24,
+            "text": "I don't have enough context to answer your question about a specific document pipeline. To help you, I'd need to know:\n\n1. **Which document pipeline** you're referring to (a specific system, project, or framework)\n2. **Where you encountered this information** (documentation, code, a course, etc.)\n3. **What domain** this relates to (machine learning, data processing, software testing, etc.)\n\nThat said, here are some common reasons why synthetic documents might be used in pipelines:\n\n- **Testing & Development**: Synthetic data allows testing without exposing real sensitive information\n- **Reproducibility**: Controlled synthetic data produces consistent results\n- **Scale**: Easy to generate large volumes for performance testing\n- **Privacy**: Avoids handling personally identifiable information (PII)\n- **Cost**: Cheaper than acquiring real data\n- **Availability**: Real data may not exist yet or be hard to obtain\n- **Edge cases**: Can deliberately create unusual scenarios for robustness testing\n\nCould you provide more details about which specific document pipeline you're asking about?"
+          }
+        },
+        {
+          "id": "q6",
+          "question": "What does Textract charge per page for FORMS, TABLES and QUERIES together?",
+          "retrieved_gold": true,
+          "gold_ranks": [
+            3
+          ],
+          "grounded": {
+            "correct": true,
+            "cited": [
+              1,
+              3
+            ],
+            "cited_wrong_source": false,
+            "refused": false,
+            "output_tokens": 47,
+            "input_tokens": 833,
+            "text": "According to the sources, Textract charges **$0.0700 per page** for FORMS, TABLES and QUERIES together when using the AnalyzeDocument API call [1][3]."
+          },
+          "ungrounded": {
+            "correct": false,
+            "refused": false,
+            "output_tokens": 74,
+            "input_tokens": 45,
+            "text": "I don't have access to current AWS Textract pricing information. Pricing can change over time and may vary by region.\n\nTo get accurate pricing for Textract's FORMS, TABLES, and QUERIES features, please visit the [AWS Textract pricing page](https://aws.amazon.com/textract/pricing/)."
+          },
+          "bare": {
+            "correct": false,
+            "refused": false,
+            "output_tokens": 187,
+            "input_tokens": 30,
+            "text": "# AWS Textract Pricing\n\nAWS Textract charges **separately** for each feature type, not as a combined rate. Here's the current pricing structure:\n\n| Feature | Price per page |\n|---------|---|\n| **Forms** | $0.50 |\n| **Tables** | $1.00 |\n| **Queries** | $0.10 |\n\n## Combined Cost Example\nIf you process a single document that uses all three features:\n- Forms: $0.50\n- Tables: $1.00\n- Queries: $0.10\n- **Total: $1.60 per page**\n\n**Note:** Prices are per page and may vary by region. For the most current pricing, check the [AWS Textract pricing page](https://aws.amazon.com/textract/pricing/)."
+          }
+        },
+        {
+          "id": "q7",
+          "question": "What is the confidence threshold for redacting PII, and what happens below it?",
+          "retrieved_gold": true,
+          "gold_ranks": [
+            1
+          ],
+          "grounded": {
+            "correct": true,
+            "cited": [
+              1
+            ],
+            "cited_wrong_source": false,
+            "refused": false,
+            "output_tokens": 137,
+            "input_tokens": 900,
+            "text": "# Confidence Threshold for PII Redaction\n\nThe confidence threshold for redacting PII is **0.80** [1].\n\n**Below this threshold:**\n- PII findings are **reported for human review instead of being automatically redacted** [1]\n- This approach is used because redaction is destructive, and ambiguous cases should be decided by a human rather than automatically removed [1]\n\nFor example, the word \"Dorchester\" was detected as an ADDRESS with only 0.587 confidence and was surfaced for review rather than redacted, since a bare town name is genuinely ambiguous [1]."
+          },
+          "ungrounded": {
+            "correct": false,
+            "refused": true,
+            "output_tokens": 99,
+            "input_tokens": 43,
+            "text": "I don't have specific information about a confidence threshold for redacting PII (Personally Identifiable Information) in my training data.\n\nThis would depend on the particular system or tool being used. Different organizations and tools implement PII redaction differently, with varying confidence thresholds and handling procedures.\n\nIf you're asking about a specific system, tool, or organization's policy, could you provide more context? That would help me give you a more accurate answer."
+          },
+          "bare": {
+            "correct": false,
+            "refused": true,
+            "output_tokens": 292,
+            "input_tokens": 28,
+            "text": "# Confidence Threshold for PII Redaction\n\nI don't have access to specific internal documentation about Anthropic's exact confidence thresholds for PII (Personally Identifiable Information) redaction.\n\nHowever, I can share what's generally true about how I handle PII:\n\n## General Approach\n\n- **I aim to avoid reproducing PII** when I recognize it, regardless of confidence level\n- **I don't have a published \"threshold\"** that I operate above or below\n- **My behavior is consistent**: I try to be cautious about PII across the board rather than applying a confidence cutoff\n\n## What I Actually Do\n\n- If you share PII with me, I generally won't repeat it back unnecessarily\n- I won't help use PII for harmful purposes\n- I acknowledge when I'm uncertain about whether something is PII\n\n## What I Don't Know\n\n- Specific internal confidence metrics Anthropic uses\n- Whether different types of PII have different thresholds\n- Exact technical implementations of redaction systems\n\nIf you have questions about how I handle your personal information or Anthropic's privacy practices, I'd recommend checking [Anthropic's privacy policy](https://www.anthropic.com/privacy) or contacting them directly.\n\nIs there a specific PII handling scenario you're concerned about?"
+          }
+        },
+        {
+          "id": "q8",
+          "question": "Why was the Converse API chosen instead of InvokeModel?",
+          "retrieved_gold": true,
+          "gold_ranks": [
+            1
+          ],
+          "grounded": {
+            "correct": true,
+            "cited": [
+              1
+            ],
+            "cited_wrong_source": false,
+            "refused": false,
+            "output_tokens": 133,
+            "input_tokens": 450,
+            "text": "The Converse API was chosen instead of InvokeModel because [1]:\n\n1. **Unified schema**: Converse takes one consistent JSON shape for every model, whereas InvokeModel requires each provider (Anthropic, Meta, Mistral) to use their own schema, resulting in significant translation code.\n\n2. **Consistent token counts**: Converse returns token counts in a consistent place across all models.\n\n3. **Simplified benchmarking**: This consistency allows a benchmark with a mixed lineup of models to fit in one loop without spending most of its code translating between different provider schemas."
+          },
+          "ungrounded": {
+            "correct": false,
+            "refused": true,
+            "output_tokens": 89,
+            "input_tokens": 41,
+            "text": "I don't have enough context to answer this question. I'm not aware of a specific decision or document comparing Converse API and InvokeModel that you're referring to.\n\nCould you provide more details, such as:\n- What project or system this relates to?\n- Where you encountered this comparison?\n- What the specific use case was?\n\nThis would help me give you a more accurate answer."
+          },
+          "bare": {
+            "correct": false,
+            "refused": true,
+            "output_tokens": 205,
+            "input_tokens": 26,
+            "text": "# I don't have enough context to answer this question\n\nI don't see any previous conversation or documentation that explains a choice between the Converse API and InvokeModel. To help you, I'd need more information:\n\n1. **What project or system** are you referring to?\n2. **Where did you encounter this decision?** (code, documentation, design doc, etc.)\n3. **What are the specific use cases** being compared?\n\n## General Context\n\nIf you're asking about **AWS Bedrock APIs**, here are some typical reasons to choose one over the other:\n\n- **Converse API**: Newer, unified interface; handles multi-turn conversations; manages message history; supports tool use\n- **InvokeModel**: Lower-level; direct model invocation; more control over request/response format; potentially lower latency\n\nCould you provide more details about the specific context so I can give you a more accurate answer?"
+          }
+        },
+        {
+          "id": "q9",
+          "question": "What did the temperature sweep reveal about determinism?",
+          "retrieved_gold": true,
+          "gold_ranks": [
+            2
+          ],
+          "grounded": {
+            "correct": true,
+            "cited": [
+              2,
+              3
+            ],
+            "cited_wrong_source": false,
+            "refused": false,
+            "output_tokens": 226,
+            "input_tokens": 1033,
+            "text": "# Temperature Sweep Findings on Determinism\n\nThe temperature sweep revealed that **determinism is not guaranteed even at temperature 0** [2]. Specifically:\n\n1. **Most models showed determinism at temperature 0**: Every model except `gpt-oss-20b` returned one identical answer five times out of five when temperature was set to 0 [3].\n\n2. **One model (`gpt-oss-20b`) was non-deterministic**: It returned four distinct answers in five calls at temperature 0, likely due to floating point ordering and token ranking shifts on distributed serving stacks [2].\n\n3. **Determinism on short prompts doesn't guarantee determinism on longer sequences**: Even though models were deterministic on a single short prompt at temperature 0, when tested across twenty longer prompts, tiny differences in early token ranking changed everything downstream, causing score variations between identical runs [3].\n\nThe key insight: **\"Determinism on one short prompt does not carry to twenty longer ones\"** [3]."
+          },
+          "ungrounded": {
+            "correct": false,
+            "refused": true,
+            "output_tokens": 103,
+            "input_tokens": 36,
+            "text": "I don't have enough context to answer this question. \"Temperature sweep\" could refer to experiments in various fields\u2014physics, chemistry, materials science, or others\u2014and I'm not aware of a specific, well-known finding about determinism from such an experiment.\n\nCould you provide more details, such as:\n- What field or discipline this relates to?\n- Who conducted the research?\n- What system was being studied?\n\nThat would help me give you an accurate answer."
+          },
+          "bare": {
+            "correct": false,
+            "refused": true,
+            "output_tokens": 153,
+            "input_tokens": 21,
+            "text": "I don't have enough context to answer your question about what a specific temperature sweep revealed about determinism. Could you provide more details, such as:\n\n- **What field or experiment** you're referring to (physics, chemistry, machine learning, etc.)?\n- **What system** was being studied?\n- **Where you encountered this** (a paper, lecture, textbook)?\n- **What time period** this is from?\n\nFor example, are you asking about:\n- A physics experiment involving phase transitions?\n- A computational study about neural networks or chaos theory?\n- A philosophical thought experiment?\n- Something else entirely?\n\nWith more context, I'd be happy to help explain what was discovered."
+          }
+        },
+        {
+          "id": "q10",
+          "question": "How do you turn off Bedrock model invocation logging?",
+          "retrieved_gold": true,
+          "gold_ranks": [
+            1
+          ],
+          "grounded": {
+            "correct": true,
+            "cited": [
+              1
+            ],
+            "cited_wrong_source": false,
+            "refused": false,
+            "output_tokens": 131,
+            "input_tokens": 676,
+            "text": "To turn off Bedrock model invocation logging, follow these steps [1]:\n\n1. Go to the **Bedrock console**\n2. Click **Settings** (bottom of the left sidebar)\n3. Find *Model invocation logging*\n4. **Toggle off**\n5. **Save**\n\nNote: If you also want to clean up, delete the CloudWatch log group `/aws/bedrock/modelinvocations` afterward, but do this second\u2014deleting the log group while logging is still on will cause Bedrock to recreate it on the next call [1]."
+          },
+          "ungrounded": {
+            "correct": false,
+            "refused": false,
+            "output_tokens": 302,
+            "input_tokens": 39,
+            "text": "# Turning Off Bedrock Model Invocation Logging\n\nTo disable model invocation logging in AWS Bedrock, you need to modify the **model invocation logging configuration**:\n\n## Via AWS Console:\n1. Go to **Bedrock** \u2192 **Configurations** \u2192 **Model invocation logging**\n2. Click **Edit**\n3. Uncheck the logging options or set them to \"None\"\n4. Save changes\n\n## Via AWS CLI:\n```bash\naws bedrock put-model-invocation-logging-configuration \\\n  --logging-config loggingEnabled=false\n```\n\nOr to disable specific log types:\n```bash\naws bedrock put-model-invocation-logging-configuration \\\n  --logging-config '{\n    \"cloudWatchConfig\": {\n      \"logGroupName\": \"\",\n      \"roleArn\": \"\"\n    },\n    \"s3BucketLoggingConfig\": {\n      \"bucketName\": \"\"\n    },\n    \"textDataIdentificationConfig\": {\n      \"enabled\": false\n    }\n  }'\n```\n\n## Via SDK:\nSet the logging configuration with empty/disabled values when initializing your Bedrock client.\n\n**Note:** Disabling logging will stop CloudWatch and S3 logging of model invocations, which may impact debugging and compliance tracking."
+          },
+          "bare": {
+            "correct": false,
+            "refused": false,
+            "output_tokens": 351,
+            "input_tokens": 24,
+            "text": "# Turning Off Bedrock Model Invocation Logging\n\nTo disable model invocation logging in AWS Bedrock, you need to modify the **CloudWatch Logs configuration** in your AWS account:\n\n## Via AWS Console\n\n1. Go to **Amazon Bedrock** \u2192 **Model invocation logging**\n2. Click **Edit**\n3. Under **CloudWatch Logs**, select **Disabled**\n4. Click **Save**\n\n## Via AWS CLI\n\n```bash\naws bedrock put-model-invocation-logging-configuration \\\n  --logging-config cloudWatchConfig={logGroupName=\"\",enabled=false}\n```\n\nOr to completely remove logging:\n\n```bash\naws bedrock delete-model-invocation-logging-configuration\n```\n\n## Via Boto3 (Python)\n\n```python\nimport boto3\n\nclient = boto3.client('bedrock')\n\nclient.put_model_invocation_logging_configuration(\n    loggingConfig={\n        'cloudWatchConfig': {\n            'logGroupName': '',\n            'enabled': False\n        }\n    }\n)\n```\n\n## Important Notes\n\n- **Account-level setting**: This applies to all model invocations in your AWS account\n- **IAM permissions**: You need `bedrock:PutModelInvocationLoggingConfiguration` permission\n- **Existing logs**: Disabling logging doesn't delete previously logged data in CloudWatch\n- **Performance**: Disabling logging may slightly improve latency and reduce costs\n\nIs there a specific use case or platform you're working with?"
+          }
+        },
+        {
+          "id": "q11",
+          "question": "Why must an S3 bucket be emptied before it can be deleted?",
+          "retrieved_gold": true,
+          "gold_ranks": [
+            1
+          ],
+          "grounded": {
+            "correct": true,
+            "cited": [
+              1
+            ],
+            "cited_wrong_source": false,
+            "refused": false,
+            "output_tokens": 71,
+            "input_tokens": 862,
+            "text": "According to the source, an S3 bucket cannot be deleted while it holds anything. As stated in Source 1: \"A bucket cannot be deleted while it holds anything, and the error message when you try does not say so clearly.\" [1]\n\nThis is why the bucket must be emptied first before deletion is possible."
+          },
+          "ungrounded": {
+            "correct": true,
+            "refused": false,
+            "output_tokens": 190,
+            "input_tokens": 42,
+            "text": "# Why S3 Buckets Must Be Emptied Before Deletion\n\nAWS requires S3 buckets to be empty before deletion as a **safety measure to prevent accidental data loss**.\n\n## Key reasons:\n\n1. **Prevents accidents** - Deleting a bucket with data is irreversible. Requiring emptying first adds a deliberate step that reduces mistakes.\n\n2. **Data protection** - It ensures users consciously review and remove all objects before destroying the bucket, rather than accidentally wiping everything in one action.\n\n3. **Explicit confirmation** - The two-step process (empty, then delete) serves as confirmation that you really intend to remove the bucket and all its contents.\n\n## Note on versioning:\nIf the bucket has **versioning enabled**, you must also delete all object versions (including delete markers) before the bucket can be deleted."
+          },
+          "bare": {
+            "correct": true,
+            "refused": false,
+            "output_tokens": 333,
+            "input_tokens": 27,
+            "text": "# Why S3 Buckets Must Be Emptied Before Deletion\n\nAn S3 bucket must be emptied before deletion due to **AWS's safety design principle**: preventing accidental data loss.\n\n## Key Reasons\n\n### 1. **Prevents Accidental Deletion**\n- Requiring explicit emptying adds a confirmation step\n- Reduces the risk of accidentally deleting large amounts of data with a single command\n- Forces users to be intentional about data removal\n\n### 2. **Data Protection**\n- S3 buckets often contain critical business data\n- The extra step ensures users have considered the consequences\n- Protects against automation errors or scripts running unintended deletions\n\n### 3. **Compliance & Audit Trail**\n- Organizations may have retention policies requiring data preservation\n- The manual emptying step creates a clear audit trail\n- Helps meet regulatory requirements (GDPR, HIPAA, etc.)\n\n## What Must Be Removed\n\nBefore deletion, you must remove:\n- **All objects** (files) in the bucket\n- **All object versions** (if versioning is enabled)\n- **Delete markers** (if versioning was used)\n\n## Practical Impact\n\n```\n\u274c Cannot delete bucket with objects\n\u2705 Must empty bucket first\n\u2705 Then delete the now-empty bucket\n```\n\nThis is a deliberate friction point in the AWS API\u2014it's a feature, not a limitation. It's similar to requiring confirmation before destructive operations in other systems."
+          }
+        },
+        {
+          "id": "q12",
+          "question": "What is the contested answer key in the model bench, and why was it kept?",
+          "retrieved_gold": true,
+          "gold_ranks": [
+            2
+          ],
+          "grounded": {
+            "correct": true,
+            "cited": [
+              1
+            ],
+            "cited_wrong_source": true,
+            "refused": false,
+            "output_tokens": 208,
+            "input_tokens": 750,
+            "text": "# Contested Answer Key in Model Bench\n\nThe contested answer key is from the ticket `classify/c4`, which reads: \"It works now, though I did lose an afternoon to it before support got back to me.\" [1]\n\n**The dispute:** The answer key labels this as `negative`, but Nova Micro and Nova Pro independently answered `neutral`. The models have a valid case because the sentiment is genuinely mixed\u2014the outcome was good but the experience was bad\u2014and the three available labels contain no `mixed` option. [1]\n\n**Why it was kept:** Rather than rewriting the case to produce a clean score, it was kept and flagged in the report with reasoning. The rationale is that \"a benchmark where nothing is contested means nobody looked hard at the results.\" By keeping this example and counting it against the models, the benchmark demonstrates the difference between a model being wrong versus a measurement being wrong\u2014which is core to the project's purpose. [1]"
+          },
+          "ungrounded": {
+            "correct": false,
+            "refused": true,
+            "output_tokens": 96,
+            "input_tokens": 43,
+            "text": "I don't have enough context to answer this question accurately. \"Model bench\" could refer to several different things, and I'm not aware of a widely known controversy about a specific contested answer key that was kept.\n\nCould you provide more details, such as:\n- What field or subject area this relates to?\n- What organization or institution is involved?\n- When this occurred?\n\nWith more context, I'd be better able to help you."
+          },
+          "bare": {
+            "correct": false,
+            "refused": true,
+            "output_tokens": 210,
+            "input_tokens": 28,
+            "text": "I don't have specific information about a \"contested answer key in the model bench\" in my training data. This could refer to:\n\n1. **A specific benchmark or evaluation system** - There are various ML/AI benchmarks (like MMLU, SuperGLUE, etc.), but I'd need more context about which one you're asking about.\n\n2. **An internal document or decision** - This might be from a particular organization's internal processes that I'm not aware of.\n\n3. **A recent development** - If this is a recent event, it may be after my training data cutoff (April 2024).\n\nCould you provide more context, such as:\n- Which benchmark or model evaluation you're referring to?\n- What organization or project is involved?\n- When this decision was made?\n- What made the answer key \"contested\"?\n\nWith more details, I'd be better able to help you find the answer or discuss the topic meaningfully."
+          }
+        },
+        {
+          "id": "q13",
+          "question": "Which approach was both cheaper and more accurate in the document pipeline?",
+          "retrieved_gold": true,
+          "gold_ranks": [
+            3
+          ],
+          "grounded": {
+            "correct": true,
+            "cited": [
+              3
+            ],
+            "cited_wrong_source": false,
+            "refused": false,
+            "output_tokens": 105,
+            "input_tokens": 753,
+            "text": "According to the document, **Textract OCR \u2192 `nova-lite`** was both cheaper and more accurate [3].\n\nIt achieved perfect results (22 correct, 0 wrong, 0 missing) at a cost of $3.82 per 1,000 documents, making it 4.5\u00d7 cheaper than the next best option (Textract OCR \u2192 `claude-haiku-4.5`) while maintaining the same accuracy [3]."
+          },
+          "ungrounded": {
+            "correct": false,
+            "refused": false,
+            "output_tokens": 50,
+            "input_tokens": 39,
+            "text": "I don't have access to any document or pipeline that you're referring to. Could you please share the document or provide more context about which pipeline and approaches you're asking about? That way, I can give you an accurate answer."
+          },
+          "bare": {
+            "correct": false,
+            "refused": false,
+            "output_tokens": 63,
+            "input_tokens": 24,
+            "text": "I don't have access to any document or pipeline that you're referring to. Could you please share the document or provide more context about which pipeline and approaches you're asking about?\n\nOnce you provide that information, I'll be happy to help you identify which approach was both cheaper and more accurate."
+          }
+        },
+        {
+          "id": "q14",
+          "question": "What does Amazon S3 Vectors cost to store vectors?",
+          "retrieved_gold": true,
+          "gold_ranks": [
+            2
+          ],
+          "grounded": {
+            "correct": true,
+            "cited": [
+              2
+            ],
+            "cited_wrong_source": false,
+            "refused": false,
+            "output_tokens": 38,
+            "input_tokens": 741,
+            "text": "According to the sources provided, Amazon S3 Vectors costs **$0.06 per GB-month with no minimum and no provisioned capacity** [2]."
+          },
+          "ungrounded": {
+            "correct": false,
+            "refused": true,
+            "output_tokens": 86,
+            "input_tokens": 39,
+            "text": "I don't know. Amazon doesn't have a product called \"S3 Vectors\" that I'm aware of. \n\nYou might be referring to:\n- **Amazon OpenSearch Service** with vector search capabilities\n- **Amazon Bedrock** with vector storage\n- **DynamoDB** with vector support\n\nCould you clarify which service you're asking about, or provide more context?"
+          },
+          "bare": {
+            "correct": false,
+            "refused": true,
+            "output_tokens": 275,
+            "input_tokens": 24,
+            "text": "# Amazon S3 Vectors Pricing\n\nI don't have current pricing information for \"Amazon S3 Vectors\" as a specific service. However, here's what you should know:\n\n## Possible Services You Might Be Asking About:\n\n1. **Amazon S3 (Standard Object Storage)**\n   - Stores any data type, including vector embeddings\n   - Pricing based on storage volume (per GB/month)\n   - Currently around $0.023 per GB/month for the first 50 TB\n\n2. **Amazon OpenSearch with Vector Search**\n   - Specialized for vector similarity search\n   - Pricing based on instance type and data nodes\n   - Separate from S3 storage costs\n\n3. **Amazon Bedrock Vector Store**\n   - Managed vector database service\n   - Pricing varies by model and operations\n\n## Recommendation\n\nTo get accurate pricing:\n- Visit the **[AWS Pricing page](https://aws.amazon.com/pricing/)**\n- Check the specific service documentation\n- Use the **AWS Pricing Calculator** for your use case\n- Contact AWS sales for enterprise pricing\n\nCould you clarify which specific AWS vector service you're interested in? That would help me provide more precise information."
+          }
+        },
+        {
+          "id": "q15",
+          "question": "Why does the document pipeline count wrong answers separately from missing ones?",
+          "retrieved_gold": true,
+          "gold_ranks": [
+            1,
+            2
+          ],
+          "grounded": {
+            "correct": true,
+            "cited": [
+              1,
+              2
+            ],
+            "cited_wrong_source": false,
+            "refused": false,
+            "output_tokens": 192,
+            "input_tokens": 867,
+            "text": "According to the document, wrong and missing answers are counted separately because [1]:\n\n1. **A single accuracy figure would hide the difference between the two failure modes**, and that difference is the entire argument.\n\n2. **They represent fundamentally different risks**: \n   - Wrong answers \"cost you silently\" - the system confidently provides an incorrect value\n   - Missing answers alert you to investigate - you know to go look for the answer\n\n3. **The failure modes have opposite qualities**: Textract's missing answers are \"a worse score and a better failure\" because missing fields route to humans for review, while wrong fields announce nothing. This is the production behavior you actually want.\n\nThe key insight is that a combined accuracy metric cannot reveal whether a model is confidently guessing (inventing plausible answers) versus actually knowing the correct answer, which is a critical distinction for production use [2]."
+          },
+          "ungrounded": {
+            "correct": true,
+            "refused": true,
+            "output_tokens": 90,
+            "input_tokens": 39,
+            "text": "I don't have access to a specific document about a pipeline that counts wrong answers separately from missing ones. Could you provide more context, such as:\n\n- Which document or system you're referring to?\n- What field or domain (e.g., machine learning, data processing, QA systems)?\n- A link or excerpt from the document?\n\nWith that information, I'd be happy to help explain the reasoning."
+          },
+          "bare": {
+            "correct": true,
+            "refused": true,
+            "output_tokens": 216,
+            "input_tokens": 24,
+            "text": "I don't have access to a specific document about a pipeline that counts wrong answers separately from missing ones. To give you an accurate answer, I'd need more context about:\n\n1. **Which document** you're referring to\n2. **What system or pipeline** is being described\n3. **The specific context** (e.g., is this about data validation, testing, quality assurance, etc.)\n\nThat said, here are some common reasons why systems might track these separately:\n\n- **Different remediation**: Wrong answers might need correction/retraining, while missing data might need collection or imputation\n- **Root cause analysis**: They indicate different problems (quality vs. completeness)\n- **Metrics**: Accuracy and coverage are distinct quality dimensions\n- **Debugging**: Separating them helps identify whether issues are in data collection or processing logic\n- **Reporting**: Stakeholders may care about these metrics differently\n\nCould you share the document or provide more details about what system you're asking about?"
+          }
+        }
+      ],
+      "totals": {
+        "retrieved_gold": 15,
+        "grounded_correct": 15,
+        "grounded_cited": 15,
+        "cited_wrong_source": 1,
+        "grounded_refused": 0,
+        "ungrounded_correct": 2,
+        "ungrounded_refused": 11,
+        "bare_correct": 2,
+        "bare_refused": 11,
+        "bare_output_tokens": 2944,
+        "grounded_invented": 0,
+        "ungrounded_invented": 3,
+        "bare_invented": 3,
+        "grounded_output_tokens": 2051,
+        "ungrounded_output_tokens": 1622,
+        "n": 15
+      }
+    }
+  }
+}

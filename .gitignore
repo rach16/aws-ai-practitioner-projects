@@ -9,3 +9,7 @@ venv/
 
 # per-machine config: bucket names are account-identifying
 **/config/local.json
+
+# rebuilt by `python -m rag.embed`; every rebuild rewrites all 933 blobs,
+# so committing it adds ~5 MB to history each time for little benefit
+p2-rag-from-scratch/results/vectors.db
