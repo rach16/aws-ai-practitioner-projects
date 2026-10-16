@@ -47,29 +47,55 @@ This is the same failure as P1's contested sentiment label, with one
 difference: P1's case was genuinely ambiguous and was kept and flagged, and
 this one was simply my error and was fixed.
 
-## Comprehend missed a phone number, so there is a regex backstop
+## Comprehend missed a phone number, and the first explanation was wrong
 
-Comprehend found `555-0133` in the letter and missed `555-0182` on the invoice.
-Same format, same service, same call.
+The pipeline redacted the letter's phone number and left the invoice's in
+place. Same format, same service, same call.
 
-The difference is context. The letter says "you can reach the practice on
-555-0133". The invoice has the number alone on a letterhead line next to an
-email. **Comprehend's PII detection is contextual rather than pattern-based**,
-which makes it better than a regex at ambiguous cases and unreliable on bare
-identifiers.
+**The first explanation written down was that Comprehend needs conversational
+context, and the invoice line was too bare to give it any.** That was published
+before it was tested. Pasting the bare line into the Comprehend console
+disproved it immediately: on those three lines alone the number is found at
+0.978. Bare is when it works.
 
-So the first version of the pipeline produced output with a live phone number
-in it, and every check passed, because the checks confirmed the pipeline ran
-rather than that nothing survived it.
+`pipeline/pii_context_test.py` pins down what actually happens. It adds the
+invoice back one section at a time and watches the score:
 
-`BACKSTOP` in `enrich.py` runs regexes for identifiers with reliable formats
-after Comprehend, and the union is redacted. A regex is blind to context and
-perfect on format; Comprehend is the reverse. Neither alone is enough for a
-step where one miss is the entire failure. False positives cost a redacted
-string that did not need redacting, which is the cheap direction to be wrong in.
+| Separator | 98 chars | 204 chars | 343 chars | full doc |
+|---|---:|---:|---:|---:|
+| `·` as the document is drawn | **0.978** | 0.573 | MISSED | MISSED |
+| `-` as Textract OCRs it | **0.538** | MISSED | MISSED | MISSED |
 
-`pipeline/verify.py` then fails loudly if any known sensitive value survives.
-That gate is only writable because the documents are synthetic and the exact
+Two variables, and **neither of them is the phone number**, which is
+byte-for-byte identical in every row along with the line it sits on.
+
+**Unrelated text suppresses it.** Confidence decays as the rest of the invoice
+arrives. An invoice is full of numbers -- 620.00, 2,480.00, 98.00, 2026-03-14 --
+and in that company a phone number stops reading as a phone number.
+
+**One punctuation character costs 0.44.** The document is drawn with a middle
+dot between the email and the phone; Textract's OCR returns a hyphen. Nobody
+would think to control for that, and at 0.538 the hyphen case already sits
+below the 0.80 redaction threshold, so this document was never going to redact
+cleanly even at 98 characters.
+
+The consequence is the thing worth taking away: **a redaction step validated on
+a snippet is not validated.** Detection is a property of the whole input, not
+of the identifier. The only meaningful test is the real document at its real
+length, through the real OCR.
+
+So there are two defences rather than a better threshold. `BACKSTOP` in
+`enrich.py` runs regexes for identifiers with reliable formats after
+Comprehend, and the union is redacted: a regex is blind to context and perfect
+on format, Comprehend is the reverse, and neither alone is enough for a step
+where one miss is the whole failure. False positives cost a redacted string
+that did not need redacting, which is the cheap direction to be wrong in.
+
+`pipeline/verify.py` then fails loudly if any known sensitive value survives
+into the output. It checks the result rather than trusting that the detector
+ran, which is the only check that would have caught this.
+
+That gate is writable only because the documents are synthetic and the exact
 forbidden strings are known. On real documents you cannot write this test,
 which is an argument for building against synthetic data first and an
 uncomfortable fact about redaction generally.

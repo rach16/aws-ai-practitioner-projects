@@ -46,16 +46,20 @@ REDACT_THRESHOLD = 0.80
 
 # Backstop patterns, applied after Comprehend.
 #
-# This exists because Comprehend missed a phone number. It found 555-0133 in
-# the letter, where the surrounding words say "you can reach the practice on",
-# and missed 555-0182 on the invoice, where the same format sits alone on a
-# letterhead line. The detection is contextual rather than pattern-based, which
-# is what makes it good at ambiguous cases and unreliable on bare identifiers.
+# This exists because Comprehend missed a phone number on the invoice while
+# finding the identical format in the letter. The first explanation written
+# down was that detection needs conversational context and the invoice line
+# was too bare; that was wrong, and pii_context_test.py shows why. On those
+# three lines alone the number scores 0.978. Adding the rest of the invoice
+# drives it to MISSED, and swapping the middle dot beside it for the hyphen
+# Textract actually returns costs another 0.44.
 #
-# A regex is the opposite: blind to context, perfect on format. Neither alone
-# is enough for a redaction step, where a single miss is the whole failure, so
-# both run and the union is redacted. False positives here cost a redacted
-# string that did not need it, which is the cheap direction to be wrong in.
+# So detection is a property of the whole input, not of the identifier, and it
+# moves with things nobody would think to control for. A regex is the opposite:
+# blind to everything around it, perfect on format. Neither alone is enough for
+# a redaction step, where a single miss is the whole failure, so both run and
+# the union is redacted. False positives here cost a redacted string that did
+# not need it, which is the cheap direction to be wrong in.
 BACKSTOP = {
     "PHONE": re.compile(r"\b(?:\+?1[-. ]?)?\(?\d{3}\)?[-. ]\d{3,4}[-. ]?\d{0,4}\b"),
     "SSN": re.compile(r"\b\d{3}-\d{2}-\d{4}\b"),

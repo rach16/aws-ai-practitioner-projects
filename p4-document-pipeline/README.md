@@ -57,18 +57,32 @@ wrong answer is not.**
 
 ## Two bugs worth more than the results
 
-**Comprehend missed a phone number.** It found `555-0133` in the letter and
-missed `555-0182` on the invoice. Same format, same service, same call. The
-letter says *"you can reach the practice on 555-0133"*; the invoice has the
-number sitting alone on a letterhead line. **PII detection is contextual, not
-pattern matching**, which makes it better than a regex at ambiguous cases and
-unreliable on bare identifiers.
+**Comprehend missed a phone number, and my first explanation was wrong.** The
+pipeline redacted the letter's phone and left the invoice's in place. I wrote
+that up as "PII detection is contextual, and the invoice line was too bare".
+Pasting that bare line into the Comprehend console disproved it in ten seconds:
+alone, the number is found at 0.978.
 
-The pipeline therefore produced output with a live phone number in it, and
-every check passed, because the checks confirmed that it ran rather than that
-nothing survived it. Fixed with a regex backstop for reliably-formatted
-identifiers, plus [`verify.py`](pipeline/verify.py), which exits non-zero if
-any known sensitive value appears in the redacted output.
+[`pii_context_test.py`](pipeline/pii_context_test.py) adds the invoice back a
+section at a time:
+
+| Separator | 98 chars | 204 chars | 343 chars | full doc |
+|---|---:|---:|---:|---:|
+| `·` as drawn | **0.978** | 0.573 | MISSED | MISSED |
+| `-` as OCR'd | **0.538** | MISSED | MISSED | MISSED |
+
+Two variables, **neither of which is the phone number** — it is byte-for-byte
+identical in every row. Unrelated text suppresses the detection as it
+accumulates, and one punctuation character, a middle dot that Textract OCRs as
+a hyphen, costs 0.44 on its own. At 0.538 the real pipeline was already below
+its 0.80 threshold before any of the invoice was added.
+
+**A redaction step validated on a snippet is not validated.** Detection is a
+property of the whole input, not of the identifier. So the pipeline carries a
+regex backstop for reliably-formatted identifiers, and
+[`verify.py`](pipeline/verify.py) exits non-zero if any known sensitive value
+reaches the output — checking the result rather than trusting the detector,
+which is the only check that would have caught this.
 
 **Asking for features I never read cost 4.7×.** Textract prices feature
 *combinations*, not features added together: $0.0015 a page for raw OCR,

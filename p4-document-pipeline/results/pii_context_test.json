@@ -1,0 +1,120 @@
+{
+  "target": "555-0182",
+  "finding": "Detection of the same phone number varies with the separator character beside it and with the length of unrelated text around it. Neither variable is the identifier. A redaction step validated on a snippet is not validated.",
+  "by_separator": {
+    "middle dot (as drawn)": [
+      {
+        "input": "header only",
+        "chars": 98,
+        "phone_detected": true,
+        "phone_score": 0.978,
+        "other_pii_types": [
+          "ADDRESS",
+          "EMAIL"
+        ]
+      },
+      {
+        "input": "+ invoice metadata",
+        "chars": 204,
+        "phone_detected": true,
+        "phone_score": 0.5726,
+        "other_pii_types": [
+          "ADDRESS",
+          "DATE_TIME",
+          "EMAIL",
+          "NAME"
+        ]
+      },
+      {
+        "input": "+ line items",
+        "chars": 343,
+        "phone_detected": false,
+        "phone_score": null,
+        "other_pii_types": [
+          "ADDRESS",
+          "DATE_TIME",
+          "EMAIL"
+        ]
+      },
+      {
+        "input": "+ totals",
+        "chars": 399,
+        "phone_detected": false,
+        "phone_score": null,
+        "other_pii_types": [
+          "ADDRESS",
+          "DATE_TIME",
+          "EMAIL"
+        ]
+      },
+      {
+        "input": "+ footer (= the full document)",
+        "chars": 462,
+        "phone_detected": false,
+        "phone_score": null,
+        "other_pii_types": [
+          "ADDRESS",
+          "DATE_TIME",
+          "EMAIL"
+        ]
+      }
+    ],
+    "hyphen (as OCR'd)": [
+      {
+        "input": "header only",
+        "chars": 98,
+        "phone_detected": true,
+        "phone_score": 0.5378,
+        "other_pii_types": [
+          "ADDRESS",
+          "EMAIL"
+        ]
+      },
+      {
+        "input": "+ invoice metadata",
+        "chars": 204,
+        "phone_detected": false,
+        "phone_score": null,
+        "other_pii_types": [
+          "ADDRESS",
+          "DATE_TIME",
+          "EMAIL",
+          "NAME"
+        ]
+      },
+      {
+        "input": "+ line items",
+        "chars": 343,
+        "phone_detected": false,
+        "phone_score": null,
+        "other_pii_types": [
+          "ADDRESS",
+          "DATE_TIME",
+          "EMAIL"
+        ]
+      },
+      {
+        "input": "+ totals",
+        "chars": 399,
+        "phone_detected": false,
+        "phone_score": null,
+        "other_pii_types": [
+          "ADDRESS",
+          "DATE_TIME",
+          "EMAIL"
+        ]
+      },
+      {
+        "input": "+ footer (= the full document)",
+        "chars": 462,
+        "phone_detected": false,
+        "phone_score": null,
+        "other_pii_types": [
+          "ADDRESS",
+          "DATE_TIME",
+          "EMAIL"
+        ]
+      }
+    ]
+  }
+}
