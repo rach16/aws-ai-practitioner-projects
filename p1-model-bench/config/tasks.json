@@ -1,0 +1,198 @@
+{
+  "_comment": "Every case is graded by code in bench/tasks.py. No human and no LLM judge, so the same run grades the same way every time. 'max_tokens' is set per family at roughly twice what a correct answer needs, which keeps a rambling model from inflating the cost comparison purely by being verbose.",
+  "families": [
+    {
+      "id": "classify",
+      "label": "Ticket sentiment classification",
+      "scorer": "exact_choice",
+      "max_tokens": 10,
+      "system": "You classify customer support tickets. Reply with exactly one word: positive, negative, or neutral. No punctuation, no explanation.",
+      "cases": [
+        {
+          "id": "c1",
+          "prompt": "Third time this week the sync has failed. Nobody has replied to my last two tickets.",
+          "expected": "negative"
+        },
+        {
+          "id": "c2",
+          "prompt": "Just wanted to say the new export button saved me about an hour today. Thanks.",
+          "expected": "positive"
+        },
+        {
+          "id": "c3",
+          "prompt": "Can you confirm which timezone the scheduled reports use?",
+          "expected": "neutral"
+        },
+        {
+          "id": "c4",
+          "prompt": "It works now, though I did lose an afternoon to it before support got back to me.",
+          "expected": "negative",
+          "contested": "Mixed sentiment: the problem was resolved but the experience was bad. The label set offers no 'mixed' option, so a model answering 'neutral' is making a defensible reading rather than an error. Kept in the suite and flagged in the report instead of being quietly rewritten, because a model scored wrong by an arguable answer key is a measurement failure, not a model weakness, and the difference is the thing worth being able to spot."
+        },
+        {
+          "id": "c5",
+          "prompt": "Please close this ticket, I found the setting under Admin.",
+          "expected": "neutral"
+        },
+        {
+          "id": "c6",
+          "prompt": "Honestly the fastest turnaround I have had from any vendor. Whoever handled this deserves a raise.",
+          "expected": "positive"
+        }
+      ]
+    },
+    {
+      "id": "extract",
+      "label": "Structured extraction to JSON",
+      "scorer": "json_fields",
+      "max_tokens": 150,
+      "system": "Extract the requested fields and reply with a single JSON object and nothing else. No markdown fences, no commentary.",
+      "cases": [
+        {
+          "id": "e1",
+          "prompt": "Extract order_id, total_usd and status as JSON.\n\nOrder #A-4471 shipped on Tuesday. The customer was charged $218.40 including freight.",
+          "expected_fields": {
+            "order_id": "A-4471",
+            "total_usd": 218.4,
+            "status": "shipped"
+          }
+        },
+        {
+          "id": "e2",
+          "prompt": "Extract order_id, total_usd and status as JSON.\n\nWe cancelled order B-9032 before it left the warehouse; the $75 charge was reversed.",
+          "expected_fields": {
+            "order_id": "B-9032",
+            "total_usd": 75,
+            "status": "cancelled"
+          }
+        },
+        {
+          "id": "e3",
+          "prompt": "Extract invoice_no, due_days and currency as JSON.\n\nInvoice INV-2026-118 is payable net 30 in euros.",
+          "expected_fields": {
+            "invoice_no": "INV-2026-118",
+            "due_days": 30,
+            "currency": "EUR"
+          }
+        },
+        {
+          "id": "e4",
+          "prompt": "Extract name, role and start_month as JSON.\n\nPriya joins as a staff data engineer starting in March.",
+          "expected_fields": {
+            "name": "Priya",
+            "role": "staff data engineer",
+            "start_month": "March"
+          }
+        }
+      ]
+    },
+    {
+      "id": "constrain",
+      "label": "Length-constrained summary",
+      "scorer": "word_limit",
+      "max_tokens": 80,
+      "system": "Summarise in at most 20 words. One sentence. No preamble.",
+      "cases": [
+        {
+          "id": "s1",
+          "prompt": "The migration moved 14 services off the legacy scheduler onto Argo over nine weeks. Two rollbacks were needed, both caused by secrets that had never been checked into the new vault. Deployment time fell from 40 minutes to 6.",
+          "max_words": 20,
+          "must_include_any": [
+            "Argo",
+            "argo",
+            "scheduler"
+          ]
+        },
+        {
+          "id": "s2",
+          "prompt": "Q3 churn rose to 4.1% from 3.2%, driven almost entirely by the self-serve tier. Enterprise retention was flat. Exit surveys point at the new pricing page rather than the product itself.",
+          "max_words": 20,
+          "must_include_any": [
+            "churn",
+            "Churn",
+            "4.1",
+            "self-serve"
+          ]
+        },
+        {
+          "id": "s3",
+          "prompt": "The outage lasted 52 minutes. A config push set the connection pool to 5 instead of 500, so the API starved while CPU sat near idle, which is why autoscaling never triggered.",
+          "max_words": 20,
+          "must_include_any": [
+            "pool",
+            "config",
+            "outage",
+            "connection"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "instruct",
+      "label": "Literal instruction following",
+      "scorer": "exact_choice",
+      "max_tokens": 15,
+      "system": "Answer with the bare value only. No sentence, no punctuation, no explanation, no units.",
+      "cases": [
+        {
+          "id": "i1",
+          "prompt": "Capital city of Australia?",
+          "expected": "canberra"
+        },
+        {
+          "id": "i2",
+          "prompt": "Chemical symbol for potassium?",
+          "expected": "k"
+        },
+        {
+          "id": "i3",
+          "prompt": "How many bits in a byte?",
+          "expected": "8"
+        },
+        {
+          "id": "i4",
+          "prompt": "Which AWS service stores objects, not blocks or files?",
+          "expected": "s3"
+        }
+      ]
+    },
+    {
+      "id": "reason",
+      "label": "Multi-step arithmetic reasoning",
+      "scorer": "numeric",
+      "max_tokens": 800,
+      "system": "Work through the problem, then end your reply with the final number on its own line.",
+      "cases": [
+        {
+          "id": "r1",
+          "prompt": "A batch job processes 1,200 records an hour. It starts at 09:00 and is paused for 45 minutes at noon. How many records has it processed by 15:00?",
+          "expected": 6300
+        },
+        {
+          "id": "r2",
+          "prompt": "An API costs $0.80 per million input tokens and $3.20 per million output tokens. A request uses 1,500 input tokens and 400 output tokens. What does 10,000 such requests cost in dollars?",
+          "expected": 24.8,
+          "tolerance": 0.05
+        },
+        {
+          "id": "r3",
+          "prompt": "A test suite had 47 tests taking 12 minutes. After splitting across 4 parallel runners with 30 seconds of fixed setup per runner, what is the wall clock time in minutes?",
+          "expected": 3.5,
+          "tolerance": 0.05
+        }
+      ],
+      "_max_tokens_note": "Raised from 300 after every reasoning answer came back truncated at exactly 300 output tokens. A truncated answer measures the ceiling, not the model. The report flags any row whose stopReason is max_tokens for the same reason."
+    }
+  ],
+  "temperature_sweep": {
+    "_comment": "Same prompt, two temperatures, several repeats. Counts distinct answers. This is the inference-parameter demonstration: it should be 1 distinct answer at temperature 0 and more than 1 at temperature 1 for a model that honours the setting.",
+    "prompt": "Invent a name for a coffee shop. Reply with the name only.",
+    "temperatures": [
+      0.0,
+      1.0
+    ],
+    "repeats": 5,
+    "max_tokens": 600,
+    "_prompt_note": "The first version asked the model to name a colour. Nearly every model answered 'Blue' five times out of five at temperature 1, so the sweep showed nothing. That was a bad probe, not evidence the models ignore temperature: 'name a colour' has one overwhelmingly likely completion, and temperature rescales the distribution rather than flattening it. A prompt needs genuinely many plausible answers before the setting has anything to act on. max_tokens is generous so reasoning models are not truncated into silence the way gpt-oss-20b was."
+  }
+}

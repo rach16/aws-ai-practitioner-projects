@@ -1,0 +1,56 @@
+{
+  "region": "us-east-1",
+  "fetched_at": "2026-10-16T16:37:22+00:00",
+  "catalogue_size": 1079,
+  "prices": {
+    "nova-micro": {
+      "input_usd_per_1k": 3.5e-05,
+      "output_usd_per_1k": 0.00014,
+      "source": "pricing-api",
+      "source_detail": "USE1-NovaMicro-input-tokens / USE1-NovaMicro-output-tokens"
+    },
+    "nova-lite": {
+      "input_usd_per_1k": 6e-05,
+      "output_usd_per_1k": 0.00024,
+      "source": "pricing-api",
+      "source_detail": "USE1-NovaLite-input-tokens / USE1-NovaLite-output-tokens"
+    },
+    "nova-pro": {
+      "input_usd_per_1k": 0.0008,
+      "output_usd_per_1k": 0.0032,
+      "source": "pricing-api",
+      "source_detail": "USE1-NovaPro-input-tokens / USE1-NovaPro-output-tokens"
+    },
+    "claude-haiku-4.5": {
+      "input_usd_per_1k": 0.001,
+      "output_usd_per_1k": 0.005,
+      "source": "manual",
+      "source_detail": "https://aws.amazon.com/bedrock/pricing/ (Anthropic tab)",
+      "checked": "2026-10-16"
+    },
+    "llama3-8b": {
+      "input_usd_per_1k": 0.0003,
+      "output_usd_per_1k": 0.0006,
+      "source": "pricing-api",
+      "source_detail": "USE1-Llama3-8B-input-tokens / USE1-Llama3-8B-output-tokens"
+    },
+    "llama3.3-70b": {
+      "input_usd_per_1k": 0.00072,
+      "output_usd_per_1k": 0.00072,
+      "source": "pricing-api",
+      "source_detail": "USE1-Llama3-3-70B-input-tokens / USE1-Llama3-3-70B-output-tokens"
+    },
+    "mistral-7b": {
+      "input_usd_per_1k": 0.00015,
+      "output_usd_per_1k": 0.0002,
+      "source": "pricing-api",
+      "source_detail": "USE1-Mistral7B-input-tokens / USE1-Mistral7B-output-tokens"
+    },
+    "gpt-oss-20b": {
+      "input_usd_per_1k": 7e-05,
+      "output_usd_per_1k": 0.0003,
+      "source": "pricing-api",
+      "source_detail": "USE1-gpt-oss-20b-input-tokens / USE1-gpt-oss-20b-output-tokens"
+    }
+  }
+}

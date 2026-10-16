@@ -1,0 +1,79 @@
+{
+  "_comment": "The model lineup. 'price_match' is the AWS Pricing API usagetype prefix for this model in us-east-1; bench/pricing.py appends '-input-tokens' and '-output-tokens' to it and looks up the live rate. It is deliberately an exact match so that the cheaper 'flex' and more expensive 'priority' service tiers, and the prompt-cache rates, are never picked up by accident. A model with 'price_override' instead of 'price_match' is priced by hand because the API does not publish it; the report marks those rows. 'max_tokens_floor' raises the per-task token ceiling for one model, for models that spend output tokens on reasoning before answering.",
+  "region": "us-east-1",
+  "models": [
+    {
+      "key": "nova-micro",
+      "model_id": "amazon.nova-micro-v1:0",
+      "provider": "Amazon",
+      "price_match": "USE1-NovaMicro",
+      "access": "on-demand",
+      "note": "Smallest Nova. Text only."
+    },
+    {
+      "key": "nova-lite",
+      "model_id": "amazon.nova-lite-v1:0",
+      "provider": "Amazon",
+      "price_match": "USE1-NovaLite",
+      "access": "on-demand",
+      "note": "Mid Nova. Multimodal input."
+    },
+    {
+      "key": "nova-pro",
+      "model_id": "amazon.nova-pro-v1:0",
+      "provider": "Amazon",
+      "price_match": "USE1-NovaPro",
+      "access": "on-demand",
+      "note": "Largest Nova available on demand here."
+    },
+    {
+      "key": "claude-haiku-4.5",
+      "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+      "provider": "Anthropic",
+      "price_match": null,
+      "access": "inference-profile",
+      "note": "Inference-profile only. The 'us.' prefix is the cross-region profile, not the base model ID.",
+      "price_override": {
+        "input_usd_per_1k": 0.001,
+        "output_usd_per_1k": 0.005,
+        "source": "https://aws.amazon.com/bedrock/pricing/ (Anthropic tab)",
+        "checked": "2026-10-16",
+        "reason": "The AWS Pricing API carries no us-east-1 on-demand token rate for any current Anthropic model. Only the legacy Claude 2.x and Claude 3 entries are published. Hand-entered from the public pricing page and flagged as such in the report rather than silently mixed in with the fetched rates."
+      }
+    },
+    {
+      "key": "llama3-8b",
+      "model_id": "meta.llama3-8b-instruct-v1:0",
+      "provider": "Meta",
+      "price_match": "USE1-Llama3-8B",
+      "access": "on-demand",
+      "note": "Small open-weight baseline."
+    },
+    {
+      "key": "llama3.3-70b",
+      "model_id": "us.meta.llama3-3-70b-instruct-v1:0",
+      "provider": "Meta",
+      "price_match": "USE1-Llama3-3-70B",
+      "access": "inference-profile",
+      "note": "Same family as llama3-8b, ~9x the parameters. The within-family size comparison."
+    },
+    {
+      "key": "mistral-7b",
+      "model_id": "mistral.mistral-7b-instruct-v0:2",
+      "provider": "Mistral AI",
+      "price_match": "USE1-Mistral7B",
+      "access": "on-demand",
+      "note": "Cheapest non-Amazon model in the lineup."
+    },
+    {
+      "key": "gpt-oss-20b",
+      "model_id": "openai.gpt-oss-20b-1:0",
+      "provider": "OpenAI",
+      "price_match": "USE1-gpt-oss-20b",
+      "access": "on-demand",
+      "note": "Open-weight OpenAI model served on Bedrock.",
+      "max_tokens_floor": 512,
+      "max_tokens_floor_reason": "A reasoning model: it emits an internal reasoning block before the answer, and that block is billed and counted as output. At the suite's 10-token classification ceiling the reasoning consumed the whole budget and the reply came back empty, scoring 0 on questions the model was never given room to answer. The floor raises the ceiling for this model only. It makes the model look more expensive than the others on the cost column, which is correct: that is what it actually costs to use."
+    }
+  ]
+}

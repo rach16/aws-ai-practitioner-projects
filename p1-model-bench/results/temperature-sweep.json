@@ -1,0 +1,183 @@
+{
+  "prompt": "Invent a name for a coffee shop. Reply with the name only.",
+  "repeats": 5,
+  "ran_at": "2026-10-16T17:03:39+00:00",
+  "results": {
+    "nova-micro": {
+      "0.0": {
+        "answers": [
+          "Brewed Awakenings",
+          "Brewed Awakenings",
+          "Brewed Awakenings",
+          "Brewed Awakenings",
+          "Brewed Awakenings"
+        ],
+        "distinct": 1
+      },
+      "1.0": {
+        "answers": [
+          "Brewed Awakenings",
+          "Brew & Bloom Caf\u00e9",
+          "Java Haven",
+          "Brew Haven",
+          "Brewed Awakenings"
+        ],
+        "distinct": 4
+      }
+    },
+    "nova-lite": {
+      "0.0": {
+        "answers": [
+          "\"Brewed Awakenings\"",
+          "\"Brewed Awakenings\"",
+          "\"Brewed Awakenings\"",
+          "\"Brewed Awakenings\"",
+          "\"Brewed Awakenings\""
+        ],
+        "distinct": 1
+      },
+      "1.0": {
+        "answers": [
+          "Brewtique",
+          "Brew & Bloom",
+          "Bean Harmony Caf\u00e9",
+          "\"Bean Bliss Caf\u00e9\"",
+          "Brewed Awakenings"
+        ],
+        "distinct": 5
+      }
+    },
+    "nova-pro": {
+      "0.0": {
+        "answers": [
+          "Brew Haven.",
+          "Brew Haven.",
+          "Brew Haven.",
+          "Brew Haven.",
+          "Brew Haven."
+        ],
+        "distinct": 1
+      },
+      "1.0": {
+        "answers": [
+          "\"Brew Haven\"",
+          "\"Caf\u00e9 Elixir Beans.\"",
+          "Brew Haven.",
+          "Caffe Bella Vita.",
+          "Brew Haven."
+        ],
+        "distinct": 4
+      }
+    },
+    "claude-haiku-4.5": {
+      "0.0": {
+        "answers": [
+          "ERROR ResourceNotFoundException: Model use case details have not been submitted for this account. Fill out the Anthropic use case details form before using the model. If you have already filled out the form, try again in 15 minutes.",
+          "ERROR ResourceNotFoundException: Model use case details have not been submitted for this account. Fill out the Anthropic use case details form before using the model. If you have already filled out the form, try again in 15 minutes.",
+          "ERROR ResourceNotFoundException: Model use case details have not been submitted for this account. Fill out the Anthropic use case details form before using the model. If you have already filled out the form, try again in 15 minutes.",
+          "ERROR ResourceNotFoundException: Model use case details have not been submitted for this account. Fill out the Anthropic use case details form before using the model. If you have already filled out the form, try again in 15 minutes.",
+          "ERROR ResourceNotFoundException: Model use case details have not been submitted for this account. Fill out the Anthropic use case details form before using the model. If you have already filled out the form, try again in 15 minutes."
+        ],
+        "distinct": 1
+      },
+      "1.0": {
+        "answers": [
+          "ERROR ResourceNotFoundException: Model use case details have not been submitted for this account. Fill out the Anthropic use case details form before using the model. If you have already filled out the form, try again in 15 minutes.",
+          "ERROR ResourceNotFoundException: Model use case details have not been submitted for this account. Fill out the Anthropic use case details form before using the model. If you have already filled out the form, try again in 15 minutes.",
+          "ERROR ResourceNotFoundException: Model use case details have not been submitted for this account. Fill out the Anthropic use case details form before using the model. If you have already filled out the form, try again in 15 minutes.",
+          "ERROR ResourceNotFoundException: Model use case details have not been submitted for this account. Fill out the Anthropic use case details form before using the model. If you have already filled out the form, try again in 15 minutes.",
+          "ERROR ResourceNotFoundException: Model use case details have not been submitted for this account. Fill out the Anthropic use case details form before using the model. If you have already filled out the form, try again in 15 minutes."
+        ],
+        "distinct": 1
+      }
+    },
+    "llama3-8b": {
+      "0.0": {
+        "answers": [
+          "Brewed Awakening",
+          "Brewed Awakening",
+          "Brewed Awakening",
+          "Brewed Awakening",
+          "Brewed Awakening"
+        ],
+        "distinct": 1
+      },
+      "1.0": {
+        "answers": [
+          "Brewtiful Minds",
+          "BrewMaster's Wife",
+          "Brewtiful Minds",
+          "Brewvie",
+          "Brewstone Co."
+        ],
+        "distinct": 4
+      }
+    },
+    "llama3.3-70b": {
+      "0.0": {
+        "answers": [
+          "Brewed Awakening",
+          "Brewed Awakening",
+          "Brewed Awakening",
+          "Brewed Awakening",
+          "Brewed Awakening"
+        ],
+        "distinct": 1
+      },
+      "1.0": {
+        "answers": [
+          "Brewed Awakening",
+          "Brewed Awakening Co.",
+          "Brewed Awakening",
+          "Brewed Awakening",
+          "Brewed Awakening"
+        ],
+        "distinct": 2
+      }
+    },
+    "mistral-7b": {
+      "0.0": {
+        "answers": [
+          "Bean's Blissful Retreat",
+          "Bean's Blissful Retreat",
+          "Bean's Blissful Retreat",
+          "Bean's Blissful Retreat",
+          "Bean's Blissful Retreat"
+        ],
+        "distinct": 1
+      },
+      "1.0": {
+        "answers": [
+          "Bean's Haven\n\nOr, if you prefer something more whimsical:\n\nFancyBean's Dreamland Cafe",
+          "Bean's Blissful Retreat",
+          "Bean's Blissful Retreat",
+          "Bean's Blissful Retreat",
+          "Bean Scene: Aroma's Sanctuary"
+        ],
+        "distinct": 3
+      }
+    },
+    "gpt-oss-20b": {
+      "0.0": {
+        "answers": [
+          "Roast & Reverie",
+          "Perk & Ponder",
+          "Roast & Reverie",
+          "Caffeine Canvas",
+          "Bean & Quill"
+        ],
+        "distinct": 4
+      },
+      "1.0": {
+        "answers": [
+          "Cafe Quattro Bean",
+          "Mocha Muse",
+          "Bean & Quill",
+          "Bean & Quill",
+          "Roast & Toast"
+        ],
+        "distinct": 4
+      }
+    }
+  }
+}
