@@ -18,7 +18,7 @@ I passed AIF-C01 in September 2026. A certification shows familiarity; these sho
 
 | | Project | What it demonstrates | Status |
 |---|---|---|---|
-| **P1** | [Model Bench](./p1-model-bench) | Model selection by measured cost, latency and quality. Inference parameter sweeps. | In progress |
+| **P1** | [Model Bench](./p1-model-bench) | Model selection by measured cost, latency and quality. Inference parameter sweeps. | **Done** |
 | **P2** | [RAG from scratch](./p2-rag-from-scratch) | Chunking, embeddings, vector search and citation-backed generation, with retrieval written by hand. | Planned |
 | **P3** | [Guardrails](./p3-guardrails) | Denied topics, PII redaction and content filtering, with a model card for the RAG system. | Planned |
 | **P4** | [Document pipeline](./p4-document-pipeline) | Textract and Comprehend applied to unstructured documents, and why each service fits its job. | Planned |
@@ -38,6 +38,16 @@ An AWS Budgets alert guards the account, and each project's `DECISIONS.md` recor
 ## What is not built here
 
 **Fine-tuning.** Serving a fine-tuned model on Bedrock requires Provisioned Throughput, which costs hundreds of dollars a month. Rather than skip the topic, P2's `DECISIONS.md` works through the fine-tuning versus RAG choice with real cost figures and explains why RAG wins for that workload. The reasoning is the transferable part; the invoice is not.
+
+## Shared code
+
+`shared/bedrock.py` is the one place in this repository that calls Bedrock. It
+wraps the Converse API with retries for the errors worth retrying, a fallback
+for models that reject a separate system prompt, and both latency measurements:
+what the service reports it spent, and what the caller actually waited for.
+
+It was extracted from P1 once it was clear P2 and P3 would otherwise each
+inherit a slightly different copy.
 
 ## Repository conventions
 
